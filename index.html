@@ -3,45 +3,65 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0">
     <title>Hello Adventures</title>
-    <link rel="stylesheet" href="defaults.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="colors.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/defaults.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors.css">
+
 </head>
 
 <body>
 
-    <header class="hero">
-        <button id="menu-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z"/></svg></button>
-        <nav class="navbar hidden" id="navbar">
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Tour Packages</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <button id="theme-switch"></button>
-        </nav>
-            <div class="video-overlay">
-                <!-- <div class="intro">
-                    <h1>Welcome to Hello Adventures</h1>
-                    <p>Your journey starts here</p>
-                    <button class="cta-button"></button>
-                </div> -->
-            </div>
-            <video id="background-video" src="VID-20250302-WA0014.mp4" loop autoplay></video>
-    
-    </header>
+<header class="hero">
+    <button id="menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z"/>
+        </svg>
+    </button>
+    <nav class="navbar hidden" id="navbar">
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Tour Packages</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div id="socials"></div>
+    </nav>
+    <div class="video-overlay">
+        <!-- <div class="intro">
+            <h1>Welcome to Hello Adventures</h1>
+            <p>Your journey starts here</p>
+            <button class="cta-button"></button>
+        </div> -->
+    </div>
+    <video id="background-video" src="public/hero%20video.mp4" loop autoplay></video>
 
-    <section>Hello Adventures is your trusted companion in discovering the world like never before. We are a passionate travel agency dedicated to turning your travel dreams into unforgettable memories. Whether you're looking for a relaxing beach escape, an exciting mountain trek, a cultural city tour, or a custom-made holiday plan — we've got you covered.
+</header>
 
-With expert planning, personalized service, and handpicked destinations, Hello Adventures ensures every journey is smooth, safe, and truly adventurous. Let us handle the details while you focus on exploring, experiencing, and enjoying every moment.
+<section>
+    <p>
+        Hello Adventures is your trusted companion in discovering the world like never before. We are a passionate
+        travel agency dedicated to turning your travel dreams into unforgettable memories. Whether you're looking for a
+        relaxing beach escape, an exciting mountain trek, a cultural city tour, or a custom-made holiday plan — we've got
+        you covered.
 
-Hello Adventures – Say hello to your next adventure!</section>
-    
+        With expert planning, personalized service, and handpicked destinations, Hello Adventures ensures every journey is
+        smooth, safe, and truly adventurous. Let us handle the details while you focus on exploring, experiencing, and
+        enjoying every moment.
+
+        Hello Adventures – Say hello to your next adventure!
+    </p>
+</section>
+
 </body>
 
-<script src="main.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
 
 </html>

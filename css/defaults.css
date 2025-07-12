@@ -1,0 +1,32 @@
+*{
+    border:none;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    transition: background-color 250ms ease, color 250ms ease;
+    color: var(--text-on-background-color);
+    font-family:"Roboto",Arial, Helvetica, sans-serif;
+}
+body {
+    background-color: var(--surface-bg-color);
+    overflow-x: hidden;
+}
+
+button {
+    border: none;
+    border-radius: 1em;
+}
+
+a{
+    text-decoration: none;
+}
+section{
+    height:100vh;
+    width:100vw;
+    padding: 1em;
+    
+}
+
+p{
+    max-width: 100ch;
+}
