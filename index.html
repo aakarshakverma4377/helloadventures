@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello Adventures</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/defaults.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="./css/defaults.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/colors.css">
 
 </head>
 
@@ -40,8 +40,11 @@
             <button class="cta-button"></button>
         </div> -->
     </div>
-    <video id="background-video" src="public/hero%20video.mp4" loop autoplay></video>
-
+    <video id="background-video" loop autoplay="autoplay" muted
+           disablepictureinpicture>
+        <source src="./assets/hero_video.mp4" type="video/mp4">
+        Your browser does not support does not support video playback.
+    </video>
 </header>
 
 <section>
