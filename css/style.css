@@ -132,3 +132,63 @@
   pointer-events: none
 
 }
+
+/*-------------------------------------------------------------------------------------------------------
+/*------------------------------------------- CARDS -----------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------
+*/
+
+.card-container {
+  display: flex;
+  gap: 40px; /* space between cards */
+  flex-wrap: wrap; /* wrap on small screens */
+  justify-content: center;
+}
+
+.card {
+      display: flex;
+      background-color: #e1e2bb;
+      padding: 20px;
+      max-width: 600px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 250px;
+      height: auto;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-content h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .card-content p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+      margin: 15px 0;
+    }
+
+    .card-content button {
+      background-color: #444;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .card-content button:hover {
+      background-color: #222;
+    }
+
