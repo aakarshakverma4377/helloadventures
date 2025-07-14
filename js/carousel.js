@@ -20,7 +20,7 @@ function getScale(x) {
 
 function getOpacity(x) {
     const maxOpacity = 1.0;
-    const minOpacity = 0.1;
+    const minOpacity = 0.7;
     const opacityRange = maxOpacity - minOpacity;
     const factor = getSquash(x);
     return minOpacity + opacityRange * factor;
@@ -41,11 +41,14 @@ function toTitleCase(str) {
 
 class Carousel {
     radius = 200;
-    visible_count = 2;
+    visible_side_items = 2;
+    animation_time_ms=250;
 
     constructor(el_id, data) {
         this.parent_id = el_id;
-        this.side_items_length = 1;
+        this.animation_queue= [];
+        this.is_animating = false;
+        this.queue_timer_id = null;
         // this.el = document.getElementById(el_id)
         this.data = data;
         this.carousel_items = [];
@@ -54,8 +57,6 @@ class Carousel {
         const parent = document.getElementById(el_id);
         const outer = document.createElement("div");
         const entries = Object.entries(data);
-        const maxZIndex = getMaxZIndex(entries.length);
-        console.log(maxZIndex);
         this.center_index = entries.length % 2 === 0 ? entries.length / 2 : (entries.length - 1) / 2;
         for (let i = 0; i < entries.length; i++) {
             const [key, entry] = entries[i];
@@ -76,6 +77,7 @@ class Carousel {
         }
         const btnLeft = document.createElement("button");
         const btnRight = document.createElement("button");
+        const maxZIndex = getMaxZIndex(entries.length + 1);
         btnLeft.style.zIndex = maxZIndex + 1;
         btnRight.style.zIndex = maxZIndex + 1;
         btnLeft.classList.add("carousel-button", "left");
@@ -100,7 +102,7 @@ class Carousel {
 
     }
 
-    getVisibleIndices(window_size = this.visible_count) {
+    getVisibleIndices(window_size = this.visible_side_items) {
         let indices = [];
         for (let i = -window_size; i <= window_size; i++) {
             let idx = (this.center_index + i + this.carousel_items.length) % this.carousel_items.length;
@@ -109,63 +111,56 @@ class Carousel {
         return indices;
     }
 
-    getIndexFromCenter(i) {
-        return i - this.center_index;
-    }
-
-
-    moveTo(item_index) {
-        item_index++;
-        if (item_index >= this.carousel_items.length)
-            return;
-        this.center_index = this.carousel_items.findIndex((el) => el.id === id);
-
-        this.update();
-    }
-
     update() {
-        this.radius = Math.floor((window.innerWidth * 0.1) / 2);
+        this.radius = Math.floor(window.innerWidth / 2);
 
-        let window_size = this.carousel_items.length / 2 > this.visible_count ? this.visible_count : Math.floor(this.carousel_items.length / 2);
-        if (window_size === 0)
-            window_size = 1;
+        let window_size = this.carousel_items.length / 2 > this.visible_side_items
+            ? this.visible_side_items
+            : Math.floor(this.carousel_items.length / 2);
+        if (window_size === 0) window_size = 1;
+
         const visible_indices = this.getVisibleIndices(window_size);
         const maxZIndex = getMaxZIndex(this.carousel_items.length);
         const visible_indices_set = new Set(visible_indices);
-        const maxAngle = Math.PI / 3; // 60° total arc
-        console.log(visible_indices, this.center_index, maxZIndex);
+
+        const sampleItem = this.carousel_items[0];
+        const itemWidth = sampleItem.offsetWidth || 100;
+
+// smaller spacingFactor = more overlap (e.g., 0.6 = 40% overlap)
+        const overlapFactor = 0.6;
+
+        console.log(visible_indices,this.center_index)
+// this.radius is already set
+        const angleStep = overlapFactor * 2 * Math.asin((itemWidth * 0.5) / this.radius);
         for (const real_index of visible_indices) {
             const i1 = visible_indices.indexOf(real_index);
+            const index_from_center = i1 - window_size;
             const item = this.carousel_items[real_index];
-            const index_from_center = i1 - window_size; // -k ... 0 ... +k
+
             const item_scale = getScale(index_from_center);
             const opacity = getOpacity(index_from_center);
 
-            const angleStep = maxAngle / (window_size);
             const angle = index_from_center * angleStep;
-
             const translateX = this.radius * Math.sin(angle);
-            console.log(item.id, index_from_center, translateX);
 
             item.style.zIndex = Math.abs(maxZIndex - Math.abs(index_from_center)).toString();
-            item.style.transform = `translateX(${translateX}%) translateY(-50%) scale(${item_scale})`;
-            item.style.opacity = opacity.toString();
+            item.style.transform = `translateX(${translateX}px) translateY(-50%) scale(${item_scale})`;
+            item.style.opacity = "1";
+            // item.style.opacity = opacity.toString();
             item.style.visibility = "visible";
-
+            item.style.filter = `brightness(${opacity})`;
             visible_indices_set.add(real_index);
-
         }
-        // First, mark all items as hidden
-        this.carousel_items.forEach((item, idx) => {
-            if (!visible_indices_set.has(idx)) {
-                item.style.visibility = "";
-                item.style.transform = "";
-                item.style.zIndex = "";
-                item.style.opacity = "";
-            }
 
-        });
-        console.log(this.center_index);
+        for (const item of this.carousel_items) {
+            const idx = this.carousel_items.indexOf(item);
+            if (!visible_indices_set.has(idx)) {
+                console.log("Resetting")
+                item.style.zIndex = "-1";
+                item.style.filter = "";
+            }
+        }
+
         const id = this.getItemId(this.center_index);
         this.selected_item?.classList.remove("selected");
         this.selected_item = document.getElementById(id);
@@ -173,81 +168,113 @@ class Carousel {
     }
 
 
+    /**
+     * @param {1|-1} direction
+     */
+    enqueueMove(direction){
+        this.animation_queue.push(direction);
+        if(!this.is_animating){
+            this.processQueue()
+        }
+
+        if(this.queue_timer_id)
+            clearTimeout(this.queue_timer_id)
+
+        this.queue_timer_id = setTimeout(()=>{
+            this.animation_queue= [];
+        },this.animation_time_ms)
+    }
+    async processQueue() {
+        this.is_animating = true;
+
+        while (this.animation_queue.length > 0) {
+            const direction = this.animation_queue.shift();
+
+            if (direction === -1) {
+                this.center_index = (this.center_index - 1 + this.carousel_items.length) % this.carousel_items.length;
+            } else if (direction === 1) {
+                this.center_index = (this.center_index + 1) % this.carousel_items.length;
+            }
+
+            this.update();
+
+            // Wait for transition to finish (match CSS duration)
+            await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));
+        }
+
+        this.is_animating = false;
+    }
+
     getItemId(item_index) {
         return this.parent_id + "_carousel_item_" + item_index.toString();
     }
 
-    moveRight() {
-        this.center_index = (this.center_index + 1) % (this.carousel_items.length);
-        this.update();
-    }
-
     moveLeft() {
-        let new_index = this.center_index - 1;
-        if (new_index < 0)
-            new_index = this.carousel_items.length - 1;
-        this.center_index = new_index;
-        this.update();
+        this.enqueueMove(-1);
     }
 
+    moveRight() {
+        this.enqueueMove(1);
+    }
 
 }
 
 new Carousel("international-packages", {
     "London": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"
     },
     "New York": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
     "New Jersey": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    }
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000" }
 });
 new Carousel("domestic-packages", {
-    "andaman": {
+    "Andaman": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
-    "daman": {
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
+    "Spiti Valley": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
-    "goa": {
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
+    "Himachal Pradesh": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
     "Raipur": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
     "Shimla": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
-    "Nicobar": {
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
+    "Kashmir": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    }
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
+    "Kerala": {
+        src: "./spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"}
 });
 new Carousel("pilgrimage-packages", {
     "Vaishno Devi": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
     "Kali ka Tibba": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
-    "Vaishno Devi": {
-        src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
     "Haridwar": {
         src: "./spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning"
-    },
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        price:"1000"},
 });

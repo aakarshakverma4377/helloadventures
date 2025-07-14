@@ -1,11 +1,15 @@
-.carousel{
+
+.carousel {
     display: flex;
     justify-content: center;
     align-content: center;
     height: 100%;
     width: 100vw;
 }
-.carousel-item{
+
+.carousel-item {
+    user-select: none;
+
     position: absolute;
     top: 50%;
 
@@ -14,54 +18,72 @@
     justify-content: end;
 
     height: 90vh;
-    width: 50vw;
-    max-width: 500px;
+    width: 80vw;
+    min-width: 30ch;
+    max-width: 1000px;
     max-height: 500px;
+    filter: brightness(0.5);
     opacity: 0;
 
-    background-size:cover;
+    background-size: cover;
     background-color: var(--carousel-bg);
     color: var(--text-on-carousel-color);
 
     border-radius: var(--border-radius);
 
-    will-change: transform;
+    will-change: z-index;
     transform: translateY(-50%) translateX(0);
-    transition: transform 250ms, opacity 250ms;
+    transition: transform 250ms, filter 250ms;
 
     overflow: hidden;
 
 }
-.carousel-item > div{
+
+.carousel-item > div {
     background-color: var(--overlay-color);
     color: inherit;
+    backdrop-filter: blur(5px);
 }
+
 .carousel-item > div > p {
+    font-size: 1.3em;
     padding: 0 0.5em 1em 1em;
     color: var(--text-color-secondary);
 }
 
 .carousel-item > div > h2 {
-    font-size: 2em;
+    font-size: 3em;
     padding: 0.5em 0.5em 0.1em 0.5em;
     color: var(--text-color-primary);
 }
-.carousel-item.selected{
-    transform:scale(1.2) translateY(-50%) !important;
-    opacity: 1 !important;
-    box-shadow: 0 0  100px 10px #000;
+
+.carousel-item.selected {
+    transform: scale(1) translateY(-50%) !important;
+    filter: brightness(1) !important;
+    box-shadow: 0 0 100px 10px #000;
 }
 
-.carousel-button{
+.carousel-button {
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(1px);
     position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 50%;
-}
-.carousel-button.left{
-    left: 1em;
+    width: 5vw;
+    min-width: 30px;
+    height: 100vh;
+    top: 0;
+    border-radius: 0;
+    transition: background-color 250ms ease-in-out, opacity 250ms, backdrop-filter 250ms ease-in-out;
 }
 
-.carousel-button.right{
-    right: 1em;
+.carousel-button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.carousel-button.left {
+    left: 0;
+}
+
+.carousel-button.right {
+    right: 0;
 }

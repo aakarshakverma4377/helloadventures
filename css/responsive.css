@@ -1,0 +1,10 @@
+@media (pointer:coarse) {
+    .carousel-button {
+        height: 50px;
+        width: 50px;
+        backdrop-filter: blur(10px);
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: var(--border-radius);
+    }
+}

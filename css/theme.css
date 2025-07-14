@@ -1,6 +1,6 @@
 :root{
     --border-color: rgba(0, 0, 0, 0.52);
-    --overlay-color: rgba(0, 0, 0, 0.61);
+    --overlay-color: rgba(0, 0, 0, 0.35);
     --section-color-bg-even:#f6cc99;
     --section-color-bg-odd: #fd9412;
     --primary-color: #0d0053;
