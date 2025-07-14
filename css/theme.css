@@ -1,6 +1,8 @@
 :root{
     --border-color: rgba(0, 0, 0, 0.52);
     --overlay-color: rgba(0, 0, 0, 0.61);
+    --section-color-bg-even:#f6cc99;
+    --section-color-bg-odd: #fd9412;
     --primary-color: #0d0053;
     --tooltip-color:#000;
     --primary-color-hover: #bb88fa;
@@ -17,11 +19,16 @@
     --button-fg-highlighted-color: #222222;
     --button-fg-selected-color: #111111;
     --button-fg-hover-color: #000000;
-
+    --carousel-bg: #f6cc99;
     /* === TEXT COLORS === */
     --text-on-primary-color: #ffffff;
     --text-on-secondary-color: #000000;
     --text-on-background-color: #000000;
+
+    --text-on-carousel-color:#fff;
+    --border-radius:10px;
+    --text-color-secondary:#ccc;
+    --text-color-primary:#eee;
 }
 
 
