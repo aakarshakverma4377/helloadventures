@@ -9,6 +9,7 @@
 
 .carousel-item {
     user-select: none;
+    pointer-events: none;
 
     position: absolute;
     top: 50%;
@@ -17,11 +18,10 @@
     flex-direction: column;
     justify-content: end;
 
-    height: 90vh;
-    width: 80vw;
-    min-width: 30ch;
+    height: min(80vh,80vw);
+    width: min(80vw,80vh);
     max-width: 1000px;
-    max-height: 500px;
+    max-height: 1000px;
     filter: brightness(0.5);
     opacity: 0;
 
@@ -58,6 +58,7 @@
 }
 
 .carousel-item.selected {
+    pointer-events: all;
     transform: scale(1) translateY(-50%) !important;
     filter: brightness(1) !important;
     box-shadow: 0 0 100px 10px #000;

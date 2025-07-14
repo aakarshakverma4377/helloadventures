@@ -42,11 +42,11 @@ function toTitleCase(str) {
 class Carousel {
     radius = 200;
     visible_side_items = 2;
-    animation_time_ms=250;
+    animation_time_ms = 250;
 
     constructor(el_id, data) {
         this.parent_id = el_id;
-        this.animation_queue= [];
+        this.animation_queue = [];
         this.is_animating = false;
         this.queue_timer_id = null;
         // this.el = document.getElementById(el_id)
@@ -61,14 +61,17 @@ class Carousel {
         for (let i = 0; i < entries.length; i++) {
             const [key, entry] = entries[i];
             const para_el = document.createElement("p");
-            const bg_el = document.createElement("div");
+            const bg_el = document.createElement("a");
             const container_el = document.createElement("div");
             const heading_el = document.createElement("h2");
             bg_el.id = this.getItemId(i);
             bg_el.classList.add("carousel-item");
             bg_el.style.backgroundImage = `url(${entry.src})`;
+            bg_el.href = entry.link;
+            bg_el.target = "_blank";
+            bg_el.rel = "noopener noreferrer";
             para_el.innerText = entry.text;
-            heading_el.innerText = toTitleCase(key);
+            heading_el.innerText = toTitleCase(key) + " - ₹" + entry.price ;
 
             container_el.append(heading_el, para_el);
             bg_el.append(container_el);
@@ -129,7 +132,7 @@ class Carousel {
 // smaller spacingFactor = more overlap (e.g., 0.6 = 40% overlap)
         const overlapFactor = 0.6;
 
-        console.log(visible_indices,this.center_index)
+        console.log(visible_indices, this.center_index);
 // this.radius is already set
         const angleStep = overlapFactor * 2 * Math.asin((itemWidth * 0.5) / this.radius);
         for (const real_index of visible_indices) {
@@ -155,7 +158,7 @@ class Carousel {
         for (const item of this.carousel_items) {
             const idx = this.carousel_items.indexOf(item);
             if (!visible_indices_set.has(idx)) {
-                console.log("Resetting")
+                console.log("Resetting");
                 item.style.zIndex = "-1";
                 item.style.filter = "";
             }
@@ -171,19 +174,20 @@ class Carousel {
     /**
      * @param {1|-1} direction
      */
-    enqueueMove(direction){
+    enqueueMove(direction) {
         this.animation_queue.push(direction);
-        if(!this.is_animating){
-            this.processQueue()
+        if (!this.is_animating) {
+            this.processQueue();
         }
 
-        if(this.queue_timer_id)
-            clearTimeout(this.queue_timer_id)
+        if (this.queue_timer_id)
+            clearTimeout(this.queue_timer_id);
 
-        this.queue_timer_id = setTimeout(()=>{
-            this.animation_queue= [];
-        },this.animation_time_ms)
+        this.queue_timer_id = setTimeout(() => {
+            this.animation_queue = [];
+        }, this.animation_time_ms);
     }
+
     async processQueue() {
         this.is_animating = true;
 
@@ -221,60 +225,85 @@ class Carousel {
 
 new Carousel("international-packages", {
     "London": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"
+        link: "./pages/andaman.html",
+        price: "1000"
     },
     "New York": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/new-york.html",
+        price: "1000"
+    },
     "New Jersey": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000" }
+        link: "./pages/andaman.html",
+        price: "1000"
+    }
 });
 new Carousel("domestic-packages", {
     "Andaman": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/andaman.html",
+        price: "1000"
+    },
     "Spiti Valley": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/andaman.html",
+        price: "1000"
+    },
     "Himachal Pradesh": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/andaman.html",
+        price: "1000"
+    },
     "Raipur": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/andaman.html",
+        price: "1000"
+    },
     "Shimla": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/andaman.html",
+        price: "1000"
+    },
     "Kashmir": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/andaman.html",
+        price: "1000"
+    },
     "Kerala": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"}
+        link: "./pages/andaman.html",
+        price: "1000"
+    }
 });
 new Carousel("pilgrimage-packages", {
     "Vaishno Devi": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/andaman.html",
+        price: "1000"
+    },
     "Kali ka Tibba": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/andaman.html",
+        price: "1000"
+    },
     "Haridwar": {
-        src: "./spiti.jpg",
+        src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        price:"1000"},
+        link: "./pages/andaman.html",
+        price: "1000"
+    }
 });

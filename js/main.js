@@ -5,10 +5,10 @@ menu_btn.addEventListener('click', () => {
 });
 
 function insertSocial(name, url, icon_svg){
-    const socials_parent =  document.getElementById("socials")
-    const social_icon = document.createElement("div")
-    social_icon.classList.add("social-icon")
-    social_icon.setAttribute("data-tooltip",name)
+    const socials_parent =  document.getElementById("socials");
+    const social_icon = document.createElement("div");
+    social_icon.classList.add("social-icon");
+    social_icon.setAttribute("data-tooltip",name);
     social_icon.innerHTML = icon_svg;
     socials_parent.append(social_icon)
 }
