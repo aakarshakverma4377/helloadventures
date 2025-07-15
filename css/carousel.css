@@ -20,8 +20,8 @@
 
     height: min(80vh,80vw);
     width: min(80vw,80vh);
-    max-width: 1000px;
-    max-height: 1000px;
+    max-width: 500px;
+    max-height: 500px;
     filter: brightness(0.5);
     opacity: 0;
 
