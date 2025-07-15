@@ -224,86 +224,140 @@ class Carousel {
 }
 
 new Carousel("international-packages", {
-    "London": {
+    "Dubai": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
+        link: "./pages/international/dubai.html",
         price: "1000"
     },
-    "New York": {
+    "SriLanka": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/new-york.html",
+        link: "./pages/international/sri-lanka.html",
         price: "1000"
     },
-    "New Jersey": {
+    "Singapore": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
+        link: "./pages/international/singapore.html",
         price: "1000"
-    }
+    },
+    "Thailand": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/international/thailand.html",
+        price: "1000"
+    },
+    "Nepal": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/international/nepal.html",
+        price: "1000"
+    },
 });
 new Carousel("domestic-packages", {
-    "Andaman": {
-        src: "./assets/spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
-        price: "1000"
-    },
     "Spiti Valley": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
+        link: "./pages/domestic/spiti-valley.html",
         price: "1000"
     },
     "Himachal Pradesh": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
+        link: "./pages/domestic/himachalpradesh.html",
         price: "1000"
     },
-    "Raipur": {
+    "Uttrakhand": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
-        price: "1000"
-    },
-    "Shimla": {
-        src: "./assets/spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
-        price: "1000"
-    },
-    "Kashmir": {
-        src: "./assets/spiti.jpg",
-        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
+        link: "./pages/domestic/uttrakhand.html",
         price: "1000"
     },
     "Kerala": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
+        link: "./pages/domestic/kerala.html",
         price: "1000"
-    }
+    },
+    "Andaman": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/domestic/andaman.html",
+        price: "1000"
+    },
+    "Goa": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/domestic/goa.html",
+        price: "1000"
+    },
+    "Kashmir": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/domestic/kashmir.html",
+        price: "1000"
+    },
+    "Rajasthan": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/domestic/rajasthan.html",
+        price: "1000"
+    },
+    "Sikkim": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/domestic/sikkim.html",
+        price: "1000"
+    },
+    "Golden Triangle": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/domestic/goldentemple.html",
+        price: "1000"
+    },
 });
 new Carousel("pilgrimage-packages", {
-    "Vaishno Devi": {
+    "Rameshwaram Madurai Kanyakumari": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
+        link: "./pages/pilgrimage/rameshwaram-kanyakumari.html",
         price: "1000"
     },
-    "Kali ka Tibba": {
+    "Varanasi Ayodhaya Prayagraj": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
+        link: "./pages/pilgrimage/varanasi-ayodhaya.html",
         price: "1000"
     },
-    "Haridwar": {
+    "Himachal Shaktipeeths": {
         src: "./assets/spiti.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
-        link: "./pages/andaman.html",
+        link: "./pages/pilgrimage/himachal-shaktipeeths.html",
         price: "1000"
-    }
+    },
+    "Char Dham/Do Dham": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/pilgrimage/chardham-dodham.html",
+        price: "1000"
+    },
+    "Vaishano Devi": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/pilgrimage/vaishanodevi.html",
+        price: "1000"
+    },
+    "Golden Temple": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/pilgrimage/goldentemple.html",
+        price: "1000"
+    },
+    "Pashupatinath": {
+        src: "./assets/spiti.jpg",
+        text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
+        link: "./pages/pilgrimage/pashupatinath.html",
+        price: "1000"
+    },
 });

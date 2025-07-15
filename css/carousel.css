@@ -52,7 +52,7 @@
 }
 
 .carousel-item > div > h2 {
-    font-size: 3em;
+    font-size: 2em;
     padding: 0.5em 0.5em 0.1em 0.5em;
     color: var(--text-color-primary);
 }
