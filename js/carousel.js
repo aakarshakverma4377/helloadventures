@@ -66,7 +66,7 @@ class Carousel {
             const heading_el = document.createElement("h2");
             bg_el.id = this.getItemId(i);
             bg_el.classList.add("carousel-item");
-            bg_el.style.backgroundImage = `url(${entry.src})`;
+            bg_el.style.backgroundImage = `url(${entry.img})`;
             bg_el.href = entry.link;
             bg_el.target = "_blank";
             bg_el.rel = "noopener noreferrer";
@@ -225,31 +225,31 @@ class Carousel {
 
 new Carousel("international-packages", {
     "Dubai": {
-        src: "./assets/international/dubai.jpg",
+        img: "./assets/international/dubai.jpg",
         text: "",
         link: "./pages/international/dubai.html",
         price: "1000"
     },
     "SriLanka": {
-        src: "./assets/international/srilanka.jpg",
+        img: "./assets/international/srilanka.jpg",
         text: "",
         link: "./pages/international/sri-lanka.html",
         price: "1000"
     },
     "Singapore": {
-        src: "./assets/international/singapore.jpg",
+        img: "./assets/international/singapore.jpg",
         text: "",
         link: "./pages/international/singapore.html",
         price: "1000"
     },
     "Thailand": {
-        src: "./assets/international/thailand.jpg",
+        img: "./assets/international/thailand.jpg",
         text: "",
         link: "./pages/international/thailand.html",
         price: "1000"
     },
     "Nepal": {
-        src: "./assets/international/nepal.jpg",
+        img: "./assets/international/nepal.jpg",
         text: "",
         link: "./pages/international/nepal.html",
         price: "1000"
@@ -257,61 +257,61 @@ new Carousel("international-packages", {
 });
 new Carousel("domestic-packages", {
     "Spiti Valley": {
-        src: "./assets/domestic/spiti.jpg",
+        img: "./assets/domestic/spiti.jpg",
         text: "",
         link: "./pages/domestic/spiti-valley.html",
         price: "1000"
     },
     "Himachal Pradesh": {
-        src: "./assets/domestic/shimla.jpg",
+        img: "./assets/domestic/shimla.jpg",
         text: "",
         link: "./pages/domestic/himachalpradesh.html",
         price: "1000"
     },
     "Uttrakhand": {
-        src: "./assets/domestic/uttrakhand.jpg",
+        img: "./assets/domestic/uttrakhand.jpg",
         text: "",
         link: "./pages/domestic/uttrakhand.html",
         price: "1000"
     },
     "Kerala": {
-        src: "./assets/domestic/kerala.jpg",
+        img: "./assets/domestic/kerala.jpg",
         text: "",
         link: "./pages/domestic/kerala.html",
         price: "1000"
     },
     "Andaman": {
-        src: "./assets/domestic/andaman.jpg",
+        img: "./assets/domestic/andaman.jpg",
         text: "",
         link: "./pages/domestic/andaman.html",
         price: "1000"
     },
     "Goa": {
-        src: "./assets/domestic/goa.jpeg",
+        img: "./assets/domestic/goa.jpeg",
         text: "",
         link: "./pages/domestic/goa.html",
         price: "1000"
     },
     "Kashmir": {
-        src: "./assets/domestic/kashmir.webp",
+        img: "./assets/domestic/kashmir.webp",
         text: "",
         link: "./pages/domestic/kashmir.html",
         price: "1000"
     },
     "Rajasthan": {
-        src: "./assets/domestic/rajasthan.jpeg",
+        img: "./assets/domestic/rajasthan.jpeg",
         text: "",
         link: "./pages/domestic/rajasthan.html",
         price: "1000"
     },
     "Sikkim": {
-        src: "./assets/domestic/sikkim.jpeg",
+        img: "./assets/domestic/sikkim.jpeg",
         text: "",
         link: "./pages/domestic/sikkim.html",
         price: "1000"
     },
     "Golden Triangle": {
-        src: "./assets/domestic/goldentemple.jpeg",
+        img: "./assets/domestic/goldentemple.jpeg",
         text: "",
         link: "./pages/domestic/goldentemple.html",
         price: "1000"
@@ -319,43 +319,43 @@ new Carousel("domestic-packages", {
 });
 new Carousel("pilgrimage-packages", {
     "Rameshwaram Madurai Kanyakumari": {
-        src: "./assets/pilgrimage/kanyakumari.jpeg",
+        img: "./assets/pilgrimage/kanyakumari.jpeg",
         text: "",
         link: "./pages/pilgrimage/rameshwaram-kanyakumari.html",
         price: "1000"
     },
     "Varanasi Ayodhaya Prayagraj": {
-        src: "./assets/pilgrimage/ayodhya.jpeg",
+        img: "./assets/pilgrimage/ayodhya.jpeg",
         text: "",
         link: "./pages/pilgrimage/varanasi-ayodhaya.html",
         price: "1000"
     },
     "Himachal Shaktipeeths": {
-        src: "./assets/pilgrimage/shaktipeeths.jpeg",
+        img: "./assets/pilgrimage/shaktipeeths.jpeg",
         text: "",
         link: "./pages/pilgrimage/himachal-shaktipeeths.html",
         price: "1000"
     },
     "Char Dham/Do Dham": {
-        src: "./assets/pilgrimage/chardham.jpeg",
+        img: "./assets/pilgrimage/chardham.jpeg",
         text: "",
         link: "./pages/pilgrimage/chardham-dodham.html",
         price: "1000"
     },
     "Vaishano Devi": {
-        src: "./assets/pilgrimage/vaishanodevi.jpeg",
+        img: "./assets/pilgrimage/vaishanodevi.jpeg",
         text: "",
         link: "./pages/pilgrimage/vaishanodevi.html",
         price: "1000"
     },
     "Golden Temple": {
-        src: "./assets/domestic/goldentemple.jpeg",
+        img: "./assets/domestic/goldentemple.jpeg",
         text: "",
         link: "./pages/pilgrimage/goldentemple.html",
         price: "1000"
     },
     "Pashupatinath": {
-        src: "./assets/pilgrimage/pashupatinath.avif",
+        img: "./assets/pilgrimage/pashupatinath.avif",
         text: "",
         link: "./pages/pilgrimage/pashupatinath.html",
         price: "1000"
