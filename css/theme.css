@@ -1,8 +1,8 @@
 :root{
     --border-color: rgba(0, 0, 0, 0.52);
     --overlay-color: rgba(0, 0, 0, 0.35);
-    --section-color-bg-even:#f6cc99;
-    --section-color-bg-odd: #fd9412;
+    --section-color-bg-even: #ffffff;
+    --section-color-bg-odd: #ffffff;
     --primary-color: #0d0053;
     --tooltip-color:#000;
     --primary-color-hover: #bb88fa;
