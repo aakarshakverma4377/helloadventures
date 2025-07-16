@@ -1,7 +1,16 @@
 const menu_btn = document.getElementById('menu-btn');
+const overlay = document.getElementById('page-overlay');
+const navbar = document.getElementById('navbar');
 menu_btn.addEventListener('click', () => {
-    const navbar = document.getElementById('navbar');
-    navbar?.classList.toggle('hidden');
+
+    menu_btn?.classList.add("hidden");
+    navbar?.classList.remove('hidden');
+    overlay?.classList.remove("hidden");
+});
+overlay.addEventListener("click",()=>{
+    menu_btn?.classList.remove("hidden");
+    navbar?.classList.add('hidden');
+    overlay?.classList.add("hidden");
 });
 
 function insertSocial(name, url, icon_svg){

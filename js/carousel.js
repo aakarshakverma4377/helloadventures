@@ -1,5 +1,3 @@
-const data = {};
-
 function getMaxZIndex(items_length) {
     return items_length % 2 === 0 ? items_length / 2 + 1 : (items_length + 1) / 2;
 }
@@ -39,9 +37,13 @@ function toTitleCase(str) {
     return str.join(" ");
 }
 
+function isPortrait() {
+    return window.innerWidth <= 700;
+}
+
 class Carousel {
     radius = 200;
-    visible_side_items = 2;
+    visible_side_items_count = 2;
     animation_time_ms = 250;
 
     constructor(el_id, data) {
@@ -56,26 +58,25 @@ class Carousel {
 
         const parent = document.getElementById(el_id);
         const outer = document.createElement("div");
+        const item_container = document.createElement("div");
+        item_container.classList.add("carousel-item-container");
         const entries = Object.entries(data);
         this.center_index = entries.length % 2 === 0 ? entries.length / 2 : (entries.length - 1) / 2;
         for (let i = 0; i < entries.length; i++) {
             const [key, entry] = entries[i];
-            const para_el = document.createElement("p");
             const bg_el = document.createElement("a");
-            const container_el = document.createElement("div");
             const heading_el = document.createElement("h2");
             bg_el.id = this.getItemId(i);
             bg_el.classList.add("carousel-item");
-            bg_el.style.backgroundImage = `url(${entry.img})`;
             bg_el.href = entry.link;
             bg_el.target = "_blank";
             bg_el.rel = "noopener noreferrer";
-            para_el.innerText = entry.text;
+            bg_el.setAttribute("landscape", entry.img_landscape);
+            bg_el.setAttribute("portrait", entry.img_portrait);
             heading_el.innerText = toTitleCase(key);
 
-            container_el.append(heading_el);
-            bg_el.append(container_el);
-            outer.appendChild(bg_el);
+            bg_el.append(heading_el);
+            item_container.appendChild(bg_el);
             this.carousel_items.push(bg_el);
         }
         const btnLeft = document.createElement("button");
@@ -94,18 +95,39 @@ class Carousel {
         btnRight.onclick = () => {
             this.moveRight();
         };
-        parent.append(outer, btnLeft, btnRight);
+        outer.append(item_container, btnLeft, btnRight);
+        parent.append(outer);
         outer.classList.add("carousel");
 
+        this.carousel_item_container = item_container;
 
         window.addEventListener("resize", () => {
+            for (const carouselItem of this.carousel_items) {
+                carouselItem.style.filter = "";
+                carouselItem.style.transform = "";
+                carouselItem.style.opacity = "";
+                carouselItem.style.visibility = "";
+                carouselItem.style.zIndex = "";
+            }
             this.update();
+            this.updateImages();
         });
         this.update();
+        this.updateImages();
 
     }
 
-    getVisibleIndices(window_size = this.visible_side_items) {
+    updateImages() {
+        for (const carouselItem of this.carousel_items) {
+            let img_url = carouselItem.getAttribute(isPortrait() ? "portrait" : "landscape");
+            if(img_url === ""){
+                img_url= carouselItem.getAttribute("landscape")
+            }
+            carouselItem.style.backgroundImage = `url(${img_url})`;
+        }
+    }
+
+    getVisibleIndices(window_size = this.visible_side_items_count) {
         let indices = [];
         for (let i = -window_size; i <= window_size; i++) {
             let idx = (this.center_index + i + this.carousel_items.length) % this.carousel_items.length;
@@ -115,10 +137,43 @@ class Carousel {
     }
 
     update() {
+
+        if (!isPortrait()) {
+
+            const container = this.carousel_item_container;
+            const items = this.carousel_items;
+            const outer = container.parentElement;
+
+            if (items.length === 0) return;
+
+            const itemWidth = items[0].offsetWidth;
+
+            const outerRect = outer.getBoundingClientRect();
+
+            const outerStyles = getComputedStyle(outer);
+            const outerPaddingLeft = parseFloat(outerStyles.paddingLeft) || 0;
+            const outerPaddingRight = parseFloat(outerStyles.paddingRight) || 0;
+            const outerContentWidth = outerRect.width - outerPaddingLeft - outerPaddingRight;
+
+            const totalWidth = container.scrollWidth;
+
+            const centerIndex = Math.max(0, Math.min(this.center_index, items.length - 1));
+            let offset = (itemWidth * centerIndex) - (outerContentWidth / 2) + (itemWidth / 2);
+
+            const maxOffset = Math.max(0, totalWidth - outerContentWidth);
+            offset = Math.max(0, Math.min(offset, maxOffset));
+
+            container.style.transform = `translateX(${-offset}px)`;
+
+
+            console.log(this.center_index, { itemWidth, totalWidth, outerWidth, offset, maxOffset });
+
+            return
+        }
         this.radius = Math.floor(window.innerWidth / 2);
 
-        let window_size = this.carousel_items.length / 2 > this.visible_side_items
-            ? this.visible_side_items
+        let window_size = this.carousel_items.length / 2 > this.visible_side_items_count
+            ? this.visible_side_items_count
             : Math.floor(this.carousel_items.length / 2);
         if (window_size === 0) window_size = 1;
 
@@ -129,8 +184,8 @@ class Carousel {
         const sampleItem = this.carousel_items[0];
         const itemWidth = sampleItem.offsetWidth || 100;
 
-// smaller spacingFactor = more overlap (e.g., 0.6 = 40% overlap)
-        const overlapFactor = 0.6;
+// smaller spacingFactor = more overlap (e.g., 0.4 = 60% overlap)
+        const overlapFactor = 0.8;
 
         console.log(visible_indices, this.center_index);
 // this.radius is already set
@@ -140,18 +195,18 @@ class Carousel {
             const index_from_center = i1 - window_size;
             const item = this.carousel_items[real_index];
 
+
             const item_scale = getScale(index_from_center);
-            const opacity = getOpacity(index_from_center);
 
             const angle = index_from_center * angleStep;
             const translateX = this.radius * Math.sin(angle);
 
-            item.style.zIndex = Math.abs(maxZIndex - Math.abs(index_from_center)).toString();
-            item.style.transform = `translateX(${translateX}px) translateY(-50%) scale(${item_scale})`;
-            item.style.opacity = "1";
-            // item.style.opacity = opacity.toString();
+            const opacity = getOpacity(index_from_center);
             item.style.visibility = "visible";
+            item.style.opacity = "1";
+            item.style.zIndex = Math.abs(maxZIndex - Math.abs(index_from_center)).toString();
             item.style.filter = `brightness(${opacity})`;
+            item.style.transform = ` translate(-50%, -50%) scale(${item_scale}) translateX(${translateX}px)`;
             visible_indices_set.add(real_index);
         }
 
@@ -159,8 +214,11 @@ class Carousel {
             const idx = this.carousel_items.indexOf(item);
             if (!visible_indices_set.has(idx)) {
                 console.log("Resetting");
-                item.style.zIndex = "-1";
+                item.style.zIndex = "";
                 item.style.filter = "";
+                item.style.opacity = "";
+                item.style.visibility = "";
+                item.style.transform = "";
             }
         }
 
@@ -168,13 +226,29 @@ class Carousel {
         this.selected_item?.classList.remove("selected");
         this.selected_item = document.getElementById(id);
         this.selected_item?.classList.add("selected");
+
+
     }
 
+    resizeCarousel() {
+        const container = this.carousel_item_container;
+
+        let totalWidth = 0;
+
+        for (let i = 0; i < this.carousel_items.length; i++) {
+            const item = this.carousel_items[i];
+            totalWidth += item.offsetWidth;
+        }
+
+        container.style.width = `${totalWidth}px`;
+        console.log("width", totalWidth);
+    }
 
     /**
      * @param {1|-1} direction
      */
     enqueueMove(direction) {
+
         this.animation_queue.push(direction);
         if (!this.is_animating) {
             this.processQueue();
@@ -193,17 +267,26 @@ class Carousel {
 
         while (this.animation_queue.length > 0) {
             const direction = this.animation_queue.shift();
+            if (isPortrait()) {
+                if (direction === -1) {
+                    this.center_index = (this.center_index - 1 + this.carousel_items.length) % this.carousel_items.length;
+                } else if (direction === 1) {
+                    this.center_index = (this.center_index + 1) % this.carousel_items.length;
+                }
+                this.update();
+                await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));
+            } else {
+                const new_index = Math.max(0, Math.min(this.center_index + direction, this.carousel_items.length - 1));
 
-            if (direction === -1) {
-                this.center_index = (this.center_index - 1 + this.carousel_items.length) % this.carousel_items.length;
-            } else if (direction === 1) {
-                this.center_index = (this.center_index + 1) % this.carousel_items.length;
+                if (this.center_index !== new_index) {
+                    this.center_index = new_index;
+                    this.update();
+                    await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));
+                }
             }
 
-            this.update();
 
             // Wait for transition to finish (match CSS duration)
-            await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));
         }
 
         this.is_animating = false;
@@ -225,139 +308,139 @@ class Carousel {
 
 new Carousel("international-packages", {
     "Dubai": {
-        img: "./assets/international/dubai.jpg",
-        text: "",
+        img_landscape: "./assets/international/dubai.jpg",
+        img_portrait: "",
         link: "./pages/international/dubai.html",
         price: "1000"
     },
     "SriLanka": {
-        img: "./assets/international/srilanka.jpg",
-        text: "",
+        img_landscape: "./assets/international/srilanka.jpg",
+        img_portrait: "",
         link: "./pages/international/sri-lanka.html",
         price: "1000"
     },
     "Singapore": {
-        img: "./assets/international/singapore.jpg",
-        text: "",
+        img_landscape: "./assets/international/singapore.jpg",
+        img_portrait: "",
         link: "./pages/international/singapore.html",
         price: "1000"
     },
     "Thailand": {
-        img: "./assets/international/thailand.jpg",
-        text: "",
+        img_landscape: "./assets/international/thailand.jpg",
+        img_portrait: "",
         link: "./pages/international/thailand.html",
         price: "1000"
     },
     "Nepal": {
-        img: "./assets/international/nepal.jpg",
-        text: "",
+        img_landscape: "./assets/international/nepal.jpg",
+        img_portrait: "",
         link: "./pages/international/nepal.html",
         price: "1000"
-    },
+    }
 });
 new Carousel("domestic-packages", {
     "Spiti Valley": {
-        img: "./assets/domestic/spiti.jpg",
-        text: "",
+        img_landscape: "./assets/domestic/spiti.jpg",
+        img_portrait: "",
         link: "./pages/domestic/spiti-valley.html",
         price: "1000"
     },
     "Himachal Pradesh": {
-        img: "./assets/domestic/shimla.jpg",
-        text: "",
+        img_landscape: "./assets/domestic/shimla.jpg",
+        img_portrait: "",
         link: "./pages/domestic/himachalpradesh.html",
         price: "1000"
     },
     "Uttrakhand": {
-        img: "./assets/domestic/uttrakhand.jpg",
-        text: "",
+        img_landscape: "./assets/domestic/uttrakhand.jpg",
+        img_portrait: "",
         link: "./pages/domestic/uttrakhand.html",
         price: "1000"
     },
     "Kerala": {
-        img: "./assets/domestic/kerala.jpg",
-        text: "",
+        img_landscape: "./assets/domestic/kerala.jpg",
+        img_portrait: "",
         link: "./pages/domestic/kerala.html",
         price: "1000"
     },
     "Andaman": {
-        img: "./assets/domestic/andaman.jpg",
-        text: "",
+        img_landscape: "./assets/domestic/andaman.jpg",
+        img_portrait: "",
         link: "./pages/domestic/andaman.html",
         price: "1000"
     },
     "Goa": {
-        img: "./assets/domestic/goa.jpeg",
-        text: "",
+        img_landscape: "./assets/domestic/goa.jpeg",
+        img_portrait: "",
         link: "./pages/domestic/goa.html",
         price: "1000"
     },
     "Kashmir": {
-        img: "./assets/domestic/kashmir.webp",
-        text: "",
+        img_landscape: "./assets/domestic/kashmir.webp",
+        img_portrait: "",
         link: "./pages/domestic/kashmir.html",
         price: "1000"
     },
     "Rajasthan": {
-        img: "./assets/domestic/rajasthan.jpeg",
-        text: "",
+        img_landscape: "./assets/domestic/rajasthan.jpeg",
+        img_portrait: "",
         link: "./pages/domestic/rajasthan.html",
         price: "1000"
     },
     "Sikkim": {
-        img: "./assets/domestic/sikkim.jpeg",
-        text: "",
+        img_landscape: "./assets/domestic/sikkim.jpeg",
+        img_portrait: "",
         link: "./pages/domestic/sikkim.html",
         price: "1000"
     },
     "Golden Triangle": {
-        img: "./assets/domestic/goldentemple.jpeg",
-        text: "",
+        img_landscape: "./assets/domestic/goldentemple.jpeg",
+        img_portrait: "",
         link: "./pages/domestic/goldentemple.html",
         price: "1000"
-    },
+    }
 });
 new Carousel("pilgrimage-packages", {
     "Rameshwaram Madurai Kanyakumari": {
-        img: "./assets/pilgrimage/kanyakumari.jpeg",
-        text: "",
+        img_landscape: "./assets/pilgrimage/kanyakumari.jpeg",
+        img_portrait: "",
         link: "./pages/pilgrimage/rameshwaram-kanyakumari.html",
         price: "1000"
     },
     "Varanasi Ayodhaya Prayagraj": {
-        img: "./assets/pilgrimage/ayodhya.jpeg",
-        text: "",
+        img_landscape: "./assets/pilgrimage/ayodhya.jpeg",
+        img_portrait: "",
         link: "./pages/pilgrimage/varanasi-ayodhaya.html",
         price: "1000"
     },
     "Himachal Shaktipeeths": {
-        img: "./assets/pilgrimage/shaktipeeths.jpeg",
-        text: "",
+        img_landscape: "./assets/pilgrimage/shaktipeeths.jpeg",
+        img_portrait: "",
         link: "./pages/pilgrimage/himachal-shaktipeeths.html",
         price: "1000"
     },
     "Char Dham/Do Dham": {
-        img: "./assets/pilgrimage/chardham.jpeg",
-        text: "",
+        img_landscape: "./assets/pilgrimage/chardham.jpeg",
+        img_portrait: "",
         link: "./pages/pilgrimage/chardham-dodham.html",
         price: "1000"
     },
     "Vaishano Devi": {
-        img: "./assets/pilgrimage/vaishanodevi.jpeg",
-        text: "",
+        img_landscape: "./assets/pilgrimage/vaishanodevi.jpeg",
+        img_portrait: "",
         link: "./pages/pilgrimage/vaishanodevi.html",
         price: "1000"
     },
     "Golden Temple": {
-        img: "./assets/domestic/goldentemple.jpeg",
-        text: "",
+        img_landscape: "./assets/domestic/goldentemple.jpeg",
+        img_portrait: "",
         link: "./pages/pilgrimage/goldentemple.html",
         price: "1000"
     },
     "Pashupatinath": {
-        img: "./assets/pilgrimage/pashupatinath.avif",
-        text: "",
+        img_landscape: "./assets/pilgrimage/pashupatinath.avif",
+        img_portrait: "",
         link: "./pages/pilgrimage/pashupatinath.html",
         price: "1000"
-    },
+    }
 });

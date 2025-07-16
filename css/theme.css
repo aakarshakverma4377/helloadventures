@@ -19,7 +19,7 @@
     --button-fg-highlighted-color: #222222;
     --button-fg-selected-color: #111111;
     --button-fg-hover-color: #000000;
-    --carousel-bg: #f6cc99;
+    --carousel-bg: rgba(255, 255, 255, 0.88);
     /* === TEXT COLORS === */
     --text-on-primary-color: #ffffff;
     --text-on-secondary-color: #000000;

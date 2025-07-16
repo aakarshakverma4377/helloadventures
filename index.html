@@ -12,7 +12,7 @@
           rel="stylesheet">
 
     <link rel="stylesheet" href="./css/defaults.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="./css/theme.css">
 
     <link rel="stylesheet" href="./css/carousel.css">
@@ -21,11 +21,11 @@
 </head>
 
 <body>
-
+<div id="page-overlay" class="hidden"></div>
 <header class="hero">
     <button id="menu-btn">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z"/>
+            <path fill="#fff" d="M3 4h18v2H3zm0 7h12v2H3zm0 7h18v2H3z" stroke-width="0.5" stroke="#000" />
         </svg>
     </button>
     <nav class="navbar hidden" id="navbar">
@@ -38,25 +38,22 @@
         <div id="socials"></div>
     </nav>
     <div class="video-overlay">
-        <!-- <div class="intro">
-            <h1>Welcome to Hello Adventures</h1>
-            <p>Your journey starts here</p>
-            <button class="cta-button"></button>
-        </div> -->
     </div>
     <video id="background-video" loop autoplay="autoplay" muted
            disablepictureinpicture>
         <source src="assets/other/spiticover.mp4" type="video/mp4">
         Your browser does not support does not support video playback.
     </video>
-</header>
 
+</header>
 <section id="about">
     <p >
-        Hello Adventures is a Shimla-based travel company founded by a Tourism student from Himachal Pradesh University. Rooted in the heart of the Himalayas, we focus on sustainability and responsible tourism. From international getaways to domestic escapes, pilgrimage tours to thrilling adventure packages — we craft experiences that are meaningful, nature-friendly, and deeply connected to the local culture.
+        Hello Adventures is a Shimla-based travel company founded by a Tourism student from Himachal Pradesh University.
+        Rooted in the heart of the Himalayas, we focus on sustainability and responsible tourism. From international
+        getaways to domestic escapes, pilgrimage tours to thrilling adventure packages — we craft experiences that are
+        meaningful, nature-friendly, and deeply connected to the local culture.
     </p>
 </section>
-
 <section class="package-container" id="international-packages">
     <h1>International Packages</h1>
     <div class="package-bg">

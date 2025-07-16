@@ -1,3 +1,23 @@
+/*-------------------------------------------------------------------------------------------------------
+/*------------------------------------ HERO SECTION -----------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------*/
+#page-overlay{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 999998;
+    background-color: rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(10px);
+    color: var(--text-color-primary);
+    opacity: 1;
+    cursor: url("cursor.svg"), default;
+    transition: all 250ms;
+}
+#page-overlay.hidden{
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
 .hero {
     width: 100vw;
     height: 100vh;
@@ -5,15 +25,17 @@
 
 #menu-btn {
     background: transparent;
-    mix-blend-mode: difference;
-    filter: invert(1);
     padding: 0.5em;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 9999999;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
+    transition: transform 100ms  ease-in-out;
+}
+#menu-btn.hidden{
+    transform: translateX(-100%);
 }
 
 #menu-btn:hover {
@@ -21,15 +43,19 @@
 }
 
 .navbar {
+    padding-top: 100px;
     position: fixed;
     background-color: var(--navbar-bg-color);
     display: flex;
     width: 300px;
+    max-width: 80vw;
     height: 100vh;
     justify-content: space-between;
     z-index: 999999;
     transition: 250ms transform ease-in-out;
+    font-size: 1.5em;
 }
+
 
 .navbar.hidden {
     transform: translateX(-100%);
@@ -94,16 +120,29 @@
 }
 
 /*-------------------------------------------------------------------------------------------------------
-/*------------------------------------ SOCIAL ICONS -----------------------------------------------------
+/*------------------------------------------- ABOUT -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------
- */
+*/
+
 #about{
+    height: fit-content;
     display: flex;
-    align-content: center;
+    bottom: 0;
+    padding: 1em;
+    color: var(--text-color-primary);
+    width: 100%;
     justify-content: center;
-    align-items: center;
+}
+#about p {
+    display: block;
+    width: 100ch;
     text-align: center;
 }
+
+/*-------------------------------------------------------------------------------------------------------
+/*------------------------------------ SOCIAL ICONS -----------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------*/
+
 #socials {
     position: absolute;
     bottom: 0;
@@ -226,7 +265,17 @@
 /*------------------------------------------- Packages BG Videos -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------
 */
-
+.package-container h1{
+    padding: 1em 0.1em;
+    font-size: 3em;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    width: fit-content;
+    max-width: max-content;
+}
 .package-bg {
     height: 50%;
     position: relative;
@@ -235,6 +284,7 @@
 
 .package-bg video {
     position: absolute;
+    width: 100%;
     left: 50%; /* % of surrounding element */
     top: 50%;
     transform: translate(-50%, -50%); /* % of current element */
