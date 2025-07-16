@@ -117,15 +117,6 @@ class Carousel {
 
     }
 
-    updateImages() {
-        for (const carouselItem of this.carousel_items) {
-            let img_url = carouselItem.getAttribute(isPortrait() ? "portrait" : "landscape");
-            if(img_url === ""){
-                img_url= carouselItem.getAttribute("landscape")
-            }
-            carouselItem.style.backgroundImage = `url(${img_url})`;
-        }
-    }
 
     getVisibleIndices(window_size = this.visible_side_items_count) {
         let indices = [];
@@ -136,40 +127,49 @@ class Carousel {
         return indices;
     }
 
-    update() {
-
-        if (!isPortrait()) {
-
-            const container = this.carousel_item_container;
-            const items = this.carousel_items;
-            const outer = container.parentElement;
-
-            if (items.length === 0) return;
-
-            const itemWidth = items[0].offsetWidth;
-
-            const outerRect = outer.getBoundingClientRect();
-
-            const outerStyles = getComputedStyle(outer);
-            const outerPaddingLeft = parseFloat(outerStyles.paddingLeft) || 0;
-            const outerPaddingRight = parseFloat(outerStyles.paddingRight) || 0;
-            const outerContentWidth = outerRect.width - outerPaddingLeft - outerPaddingRight;
-
-            const totalWidth = container.scrollWidth;
-
-            const centerIndex = Math.max(0, Math.min(this.center_index, items.length - 1));
-            let offset = (itemWidth * centerIndex) - (outerContentWidth / 2) + (itemWidth / 2);
-
-            const maxOffset = Math.max(0, totalWidth - outerContentWidth);
-            offset = Math.max(0, Math.min(offset, maxOffset));
-
-            container.style.transform = `translateX(${-offset}px)`;
-
-
-            console.log(this.center_index, { itemWidth, totalWidth, outerWidth, offset, maxOffset });
-
-            return
+    updateImages() {
+        for (const carouselItem of this.carousel_items) {
+            let img_url = carouselItem.getAttribute(isPortrait() ? "portrait" : "landscape");
+            if (img_url === "") {
+                img_url = carouselItem.getAttribute("landscape");
+            }
+            carouselItem.style.backgroundImage = `url(${img_url})`;
         }
+    }
+
+    updateDesktopLayout(direction) {
+        const container = this.carousel_item_container;
+        const items = this.carousel_items;
+        const outer = container.parentElement;
+        if (!items.length) return;
+
+        const itemW = items[0].offsetWidth;
+        const outerW = outer.clientWidth;
+        const totalW = container.scrollWidth;
+
+        // exact maximum scroll so last item is fully visible
+        const maxOffset = Math.max(0, totalW - outerW);
+
+        // compute next offset by one item width
+        const prevOffset = this.current_offset || 0;
+        let newOffset = prevOffset + direction * itemW;
+
+        // clamp between 0 and the true maxOffset
+        newOffset = Math.max(0, Math.min(newOffset, maxOffset));
+
+        container.style.transform = `translateX(${-newOffset}px)`;
+        this.current_offset = newOffset;
+
+        console.log("Offset:", newOffset, "of", maxOffset);
+    }
+
+
+    update(direction = 0) {
+        if (!isPortrait()) {
+            this.updateDesktopLayout(direction);
+            return;
+        }
+
         this.radius = Math.floor(window.innerWidth / 2);
 
         let window_size = this.carousel_items.length / 2 > this.visible_side_items_count
@@ -273,18 +273,9 @@ class Carousel {
                 } else if (direction === 1) {
                     this.center_index = (this.center_index + 1) % this.carousel_items.length;
                 }
-                this.update();
-                await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));
-            } else {
-                const new_index = Math.max(0, Math.min(this.center_index + direction, this.carousel_items.length - 1));
-
-                if (this.center_index !== new_index) {
-                    this.center_index = new_index;
-                    this.update();
-                    await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));
-                }
             }
-
+            this.update(direction);
+            await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));
 
             // Wait for transition to finish (match CSS duration)
         }
@@ -292,9 +283,6 @@ class Carousel {
         this.is_animating = false;
     }
 
-    getItemId(item_index) {
-        return this.parent_id + "_carousel_item_" + item_index.toString();
-    }
 
     moveLeft() {
         this.enqueueMove(-1);
@@ -302,6 +290,10 @@ class Carousel {
 
     moveRight() {
         this.enqueueMove(1);
+    }
+
+    getItemId(item_index) {
+        return this.parent_id + "_carousel_item_" + item_index.toString();
     }
 
 }
