@@ -225,31 +225,31 @@ class Carousel {
 
 new Carousel("international-packages", {
     "Dubai": {
-        src: "./assets/spiti.jpg",
+        src: "./assets/dubaicarouselimage.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
         link: "./pages/international/dubai.html",
         price: "1000"
     },
     "SriLanka": {
-        src: "./assets/spiti.jpg",
+        src: "./assets/srilankacarouselimage.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
         link: "./pages/international/sri-lanka.html",
         price: "1000"
     },
     "Singapore": {
-        src: "./assets/spiti.jpg",
+        src: "./assets/singaporecarouselimage.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
         link: "./pages/international/singapore.html",
         price: "1000"
     },
     "Thailand": {
-        src: "./assets/spiti.jpg",
+        src: "./assets/thailandcarouselimage.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
         link: "./pages/international/thailand.html",
         price: "1000"
     },
     "Nepal": {
-        src: "./assets/spiti.jpg",
+        src: "./assets/nepalcarouselimage.jpg",
         text: "In the fertile delta of the river ganges, flourished ancient kingdoms and centres of learning",
         link: "./pages/international/nepal.html",
         price: "1000"
