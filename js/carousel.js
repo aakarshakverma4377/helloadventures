@@ -225,31 +225,31 @@ class Carousel {
 
 new Carousel("international-packages", {
     "Dubai": {
-        src: "./assets/international/dubaicarouselimage.jpg",
+        src: "./assets/international/dubai.jpg",
         text: "",
         link: "./pages/international/dubai.html",
         price: "1000"
     },
     "SriLanka": {
-        src: "./assets/international/srilankacarouselimage.jpg",
+        src: "./assets/international/srilanka.jpg",
         text: "",
         link: "./pages/international/sri-lanka.html",
         price: "1000"
     },
     "Singapore": {
-        src: "./assets/international/singaporecarouselimage.jpg",
+        src: "./assets/international/singapore.jpg",
         text: "",
         link: "./pages/international/singapore.html",
         price: "1000"
     },
     "Thailand": {
-        src: "./assets/international/thailandcarouselimage.jpg",
+        src: "./assets/international/thailand.jpg",
         text: "",
         link: "./pages/international/thailand.html",
         price: "1000"
     },
     "Nepal": {
-        src: "./assets/international/nepalcarouselimage.jpg",
+        src: "./assets/international/nepal.jpg",
         text: "",
         link: "./pages/international/nepal.html",
         price: "1000"
