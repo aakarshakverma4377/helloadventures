@@ -8,6 +8,10 @@
     #about{
         padding: 1em;
     }
+    .package-bg{
+        height: 100%;
+        filter: brightness(0.5);
+    }
     .package-container h1 {
         font-size: 2em;
     }
