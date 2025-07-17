@@ -15,7 +15,7 @@
 }
 #page-overlay.hidden{
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(100%);
 }
 
 .hero {
@@ -28,14 +28,14 @@
     padding: 0.5em;
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     z-index: 9999999;
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
     transition: transform 100ms  ease-in-out;
 }
 #menu-btn.hidden{
-    transform: translateX(-100%);
+    transform: translateX(0%);
 }
 
 #menu-btn:hover {
@@ -54,11 +54,12 @@
     z-index: 999999;
     transition: 250ms transform ease-in-out;
     font-size: 1.5em;
+    right: 0;
 }
 
 
 .navbar.hidden {
-    transform: translateX(-100%);
+    transform: translateX(100%);
 
 }
 
@@ -128,7 +129,7 @@
     height: fit-content;
     display: flex;
     bottom: 0;
-    padding: 1em;
+    padding: 5em;
     color: var(--text-color-primary);
     width: 100%;
     justify-content: center;
