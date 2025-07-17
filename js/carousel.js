@@ -296,31 +296,31 @@ class Carousel {
 new Carousel("international-packages", {
     "Dubai": {
         img_landscape: "./assets/international/dubai.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/international/dubaiphone.jpeg",
         link: "./pages/international/dubai.html",
         price: "1000"
     },
     "SriLanka": {
         img_landscape: "./assets/international/srilanka.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/international/srilankaphone.jpeg",
         link: "./pages/international/sri-lanka.html",
         price: "1000"
     },
     "Singapore": {
         img_landscape: "./assets/international/singapore.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/international/singaporephone.jpeg",
         link: "./pages/international/singapore.html",
         price: "1000"
     },
     "Thailand": {
         img_landscape: "./assets/international/thailand.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/international/thailandphone.jpeg",
         link: "./pages/international/thailand.html",
         price: "1000"
     },
     "Nepal": {
         img_landscape: "./assets/international/nepal.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/international/nepalphone.jpeg",
         link: "./pages/international/nepal.html",
         price: "1000"
     }
@@ -328,61 +328,61 @@ new Carousel("international-packages", {
 new Carousel("domestic-packages", {
     "Spiti Valley": {
         img_landscape: "./assets/domestic/spiti.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/spitiphone.jpg",
         link: "./pages/domestic/spiti-valley.html",
         price: "1000"
     },
     "Himachal Pradesh": {
         img_landscape: "./assets/domestic/shimla.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/hpphone.jpeg",
         link: "./pages/domestic/himachalpradesh.html",
         price: "1000"
     },
     "Uttrakhand": {
         img_landscape: "./assets/domestic/uttrakhand.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/uttrakhandphone.jpeg",
         link: "./pages/domestic/uttrakhand.html",
         price: "1000"
     },
     "Kerala": {
         img_landscape: "./assets/domestic/kerala.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/kerelaphone.png",
         link: "./pages/domestic/kerala.html",
         price: "1000"
     },
     "Andaman": {
         img_landscape: "./assets/domestic/andaman.jpg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/andamanphone.jpeg",
         link: "./pages/domestic/andaman.html",
         price: "1000"
     },
     "Goa": {
         img_landscape: "./assets/domestic/goa.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/goaphone.jpg",
         link: "./pages/domestic/goa.html",
         price: "1000"
     },
     "Kashmir": {
         img_landscape: "./assets/domestic/kashmir.webp",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/kashmirphone.jpeg",
         link: "./pages/domestic/kashmir.html",
         price: "1000"
     },
     "Rajasthan": {
         img_landscape: "./assets/domestic/rajasthan.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/rajasthanphone.jpg",
         link: "./pages/domestic/rajasthan.html",
         price: "1000"
     },
     "Sikkim": {
         img_landscape: "./assets/domestic/sikkim.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/sikkimphone.jpeg",
         link: "./pages/domestic/sikkim.html",
         price: "1000"
     },
     "Golden Triangle": {
         img_landscape: "./assets/domestic/goldentemple.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/domestic/goldentrianglephone.jpeg",
         link: "./pages/domestic/goldentemple.html",
         price: "1000"
     }
