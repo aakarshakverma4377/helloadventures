@@ -113,24 +113,31 @@ class Carousel {
         console.log(this.carousel_item_container);
         this.startX = 0;
         this.deltaX = 0;
-        let isDragging = false;
+        this.isDragging = false;
 
         this.carousel_item_container.addEventListener("touchstart", (e) => {
-            isDragging = true;
+            this.isDragging = true;
             this.startX = e.touches[0].clientX;
             this.deltaX = 0;
-        }, {passive: false});
+            e.preventDefault();
+        }, {passive: false, capture: true});
 
         this.carousel_item_container.addEventListener("touchmove", (e) => {
-            if (!isDragging) return;
+            if (!this.isDragging) return;
 
             this.deltaX = e.touches[0].clientX - this.startX;
-            this.updateDuringDrag(this.deltaX);
-        }, {passive: false});
+            if(Math.abs(this.deltaX)>0.1){
+                e.preventDefault();
+                this.updateDuringDrag(this.deltaX);
+            }
+        }, {passive: false, capture: true});
 
         window.addEventListener("touchend", () => {
-            isDragging = false;
-            this.snapToClosestItem(this.deltaX);
+            if(this.isDragging){
+                this.isDragging = false;
+                this.snapToClosestItem(this.deltaX);
+            }
+
         });
         this.update();
         this.updateImages();
@@ -191,7 +198,7 @@ class Carousel {
 
     updateDuringDrag(delta) {
         const itemWidth = this.carousel_items[0].offsetWidth || 100;
-        const fractional_offset = -delta / (itemWidth*0.5);
+        const fractional_offset = -delta / (itemWidth * 0.5);
         for (const item of this.carousel_items) {
             item.classList.remove("transitioned-transform");
         }
