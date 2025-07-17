@@ -119,8 +119,7 @@ class Carousel {
             this.isDragging = true;
             this.startX = e.touches[0].clientX;
             this.deltaX = 0;
-            e.preventDefault();
-        }, {passive: false, capture: true});
+        });
 
         this.carousel_item_container.addEventListener("touchmove", (e) => {
             if (!this.isDragging) return;
