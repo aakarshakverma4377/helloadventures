@@ -3,13 +3,14 @@
         display: none;
     }
 }
-
-@media only screen and (max-width: 700px) {
+@media (orientation: portrait){
     #about{
         padding: 1em;
     }
-    .package-bg{
+    .package-bg {
         height: 100%;
+    }
+    .package-bg video{
         filter: brightness(0.5);
     }
     .package-container h1 {
@@ -17,7 +18,10 @@
     }
     .carousel-item {
         height: auto;
-        width: 80vw;
+        max-height: unset;
+        width: 90vw;
+        max-width: 800px;
+        /*max-height: 70vh;*/
         aspect-ratio: 4/5;
     }
 
@@ -29,6 +33,9 @@
         transform: translateY(-50%);
     }
 
+}
+
+
     /*.package-bg video{*/
     /*    width: auto;*/
     /*    height: 100%;*/
@@ -38,4 +45,3 @@
     /*    padding: 0.5em 0.5em 0.1em 0.8em;*/
     /*    color: var(--text-color-primary);*/
     /*}*/
-}

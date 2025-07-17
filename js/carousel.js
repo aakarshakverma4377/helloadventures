@@ -38,7 +38,7 @@ function toTitleCase(str) {
 }
 
 function isPortrait() {
-    return window.innerWidth <= 700;
+    return window.innerHeight > window.innerWidth;
 }
 
 class Carousel {
