@@ -1,4 +1,7 @@
+:root{
+    --stretch-bezeir-curve:cubic-bezier(.32,.34,.33,1.56);
 
+}
 .carousel {
     display: flex;
     justify-content: center;
@@ -34,7 +37,7 @@
 
     will-change: z-index;
     transform: translateY(-50%) translateX(-50%);
-    transition: transform 250ms, filter 250ms;
+    transition: all 500ms var(--stretch-bezeir-curve);
 
     overflow: hidden;
 

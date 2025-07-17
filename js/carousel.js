@@ -180,7 +180,7 @@ class Carousel {
         const itemWidth = sampleItem.offsetWidth || 100;
 
 // smaller spacingFactor = more overlap (e.g., 0.4 = 60% overlap)
-        const overlapFactor = 0.8;
+        const overlapFactor = isPortrait() ? 0.8 : 1;
 
         console.log(visible_indices, this.center_index);
 // this.radius is already set
