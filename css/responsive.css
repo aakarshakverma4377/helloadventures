@@ -9,67 +9,14 @@
     }
 }
 
+
 @media only screen and (max-width: 700px) {
-    .package-bg{
-        height: 100%;
-    }
-    .package-bg video{
-        width: auto;
-        height: 100%;
-    }
-    .carousel {
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        border: 0;
-        border-radius: 0;
-        position: absolute;
-        overflow: visible;
-        padding: 0;
-        width: 100vw;
-        height: 100%;
-        background-color: transparent;
-    }
-    .carousel-item-container {
-        background-color: transparent;
-        width: 0;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%) !important;
-        position: absolute;
-   }
     .carousel-item {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1); /* <-- This centers and scales */
-        background: #eee;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        filter: brightness(0.5);
-        border: none;
         aspect-ratio: unset;
-        height: 60vh;
+        height: 50vh;
         width: 80vw;
-        box-shadow: 0 0 50px 1px #000;
-        border-radius: var(--border-radius);
-        background-size: cover;
-        transition: all 500ms var(--stretch-bezeir-curve);
     }
-    .carousel-item.selected{
-        /*pointer-events: all;*/
-        /*box-shadow: 0 0 100px 10px #000;*/
-        /*transform: translateY(-50%) !important;*/
-        /*transform: scale(1) translateX(-50%) translateY(-50%) !important;*/
 
-    }
-    .carousel-item > div > p {
-        font-size: 0.8em;
-        padding: 0 0.5em 1em 1em;
-        color: var(--text-color-secondary);
-
-    }
 
     /*.carousel-item > div > h2 {*/
     /*    font-size: 1em;*/

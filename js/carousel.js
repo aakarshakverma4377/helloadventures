@@ -164,12 +164,7 @@ class Carousel {
     }
 
 
-    update(direction = 0) {
-        if (!isPortrait()) {
-            this.updateDesktopLayout(direction);
-            return;
-        }
-
+    update() {
         this.radius = Math.floor(window.innerWidth / 2);
 
         let window_size = this.carousel_items.length / 2 > this.visible_side_items_count
@@ -267,14 +262,14 @@ class Carousel {
 
         while (this.animation_queue.length > 0) {
             const direction = this.animation_queue.shift();
-            if (isPortrait()) {
+
                 if (direction === -1) {
                     this.center_index = (this.center_index - 1 + this.carousel_items.length) % this.carousel_items.length;
                 } else if (direction === 1) {
                     this.center_index = (this.center_index + 1) % this.carousel_items.length;
                 }
-            }
-            this.update(direction);
+
+            this.update();
             await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));
 
             // Wait for transition to finish (match CSS duration)
