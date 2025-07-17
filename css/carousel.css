@@ -3,13 +3,12 @@
 
 }
 .carousel {
-    position: relative;
+    position: absolute;
     overflow: visible;
     display: flex;
-    height: 100%;
+    height: 0;
     width: 100%;
-    flex: 1;
-    top: 0;
+    top: 50%;
     /*transform: translateY(-50%);*/
 }
 .carousel-item-container{
@@ -21,6 +20,8 @@
 }
 
 .carousel-item {
+    user-drag: none;
+    touch-action: none;
     user-select: none;
     pointer-events: none;
 
@@ -57,6 +58,7 @@
 
 }
 .carousel-item.selected {
+    touch-action: auto;
     pointer-events: all;
     /*transform: scale(1) translateY(-50%) !important;*/
     filter: brightness(1) !important;
@@ -83,7 +85,8 @@
     /*backdrop-filter: blur(1px);*/
     position: absolute;
     width: 5vw;
-    min-width: 30px;
+    min-width: 50px;
+    min-height: 50px;
     height: fit-content;
     top: 0;
     transform: translateY(-50%);
