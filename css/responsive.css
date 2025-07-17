@@ -1,23 +1,31 @@
-@media only screen and (max-width: 700px) {
+@media (pointer: coarse) {
+    .carousel-button{
+        display: none;
+    }
+}
 
+@media only screen and (max-width: 700px) {
+    .package-container h1 {
+        font-size: 2em;
+    }
     .carousel-item {
         height: auto;
         width: 80vw;
         aspect-ratio: 4/5;
     }
-    .carousel-item-container{
+
+    .carousel-item-container {
         position: absolute;
         top: 0;
         width: inherit;
-        height: calc(80vw * 5/4);
+        height: calc(80vw * 5 / 4);
         transform: translateY(-50%);
     }
+
     /*.package-bg video{*/
     /*    width: auto;*/
     /*    height: 100%;*/
     /*}*/
-
-
     /*.carousel-item > div > h2 {*/
     /*    font-size: 1em;*/
     /*    padding: 0.5em 0.5em 0.1em 0.8em;*/

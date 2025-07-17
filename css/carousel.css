@@ -1,7 +1,8 @@
-:root{
-    --stretch-bezeir-curve:cubic-bezier(.32,.34,.33,1.56);
+:root {
+    --stretch-bezeir-curve: cubic-bezier(.32, .34, .33, 1.56);
 
 }
+
 .carousel {
     position: absolute;
     overflow: visible;
@@ -11,11 +12,12 @@
     top: 50%;
     /*transform: translateY(-50%);*/
 }
-.carousel-item-container{
+
+.carousel-item-container {
     position: absolute;
     top: 0;
     width: inherit;
-    height: min(60vw,30vh);
+    height: min(60vw, 30vh);
     transform: translateY(-50%);
 }
 
@@ -33,7 +35,8 @@
     justify-content: end;
 
     /*height: 50vh;*/
-    height: min(60vw,30vh);
+    max-width: 90vw;
+    height: min(60vw, 30vh);
     aspect-ratio: 16/9;
     /*max-width: 500px;*/
     /*max-height: 500px;*/
@@ -47,16 +50,21 @@
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.37);
     border-radius: var(--border-radius);
 
-    will-change: z-index;
+    will-change: transform, filter, z-index;
     /*transform: translateY(-50%) translateX(-50%);*/
-    transition: transform 250ms ease-in-out,
-    box-shadow 250ms ease-in-out,
-    filter 250ms ease-in-out,
-    z-index 250ms ease-in-out;
+    transition: box-shadow 250ms ease-in-out,
+    filter 250ms ease-in-out;
 
     overflow: hidden;
 
 }
+
+.carousel-item.transitioned-transform {
+    transition: box-shadow 250ms ease-in-out, transform 500ms cubic-bezier(0.22, 1.61, 0.36, 1),
+    filter 250ms ease-in-out,
+    z-index 100ms ease-in-out;
+}
+
 .carousel-item.selected {
     touch-action: auto;
     pointer-events: all;

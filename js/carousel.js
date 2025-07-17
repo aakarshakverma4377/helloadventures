@@ -42,11 +42,8 @@ function isPortrait() {
 }
 
 class Carousel {
-    radius = 200;
-    visible_side_items_count = 2;
     animation_time_ms = 250;
-    is_scrolling_by_touch = false;
-    initial_touch_pos_x = 0;
+
     constructor(el_id, data) {
         this.parent_id = el_id;
         this.animation_queue = [];
@@ -113,7 +110,7 @@ class Carousel {
             this.updateImages();
         });
 
-        console.log(this.carousel_item_container)
+        console.log(this.carousel_item_container);
         this.startX = 0;
         this.deltaX = 0;
         let isDragging = false;
@@ -122,14 +119,14 @@ class Carousel {
             isDragging = true;
             this.startX = e.touches[0].clientX;
             this.deltaX = 0;
-        }, { passive: false });
+        }, {passive: false});
 
         this.carousel_item_container.addEventListener("touchmove", (e) => {
             if (!isDragging) return;
 
             this.deltaX = e.touches[0].clientX - this.startX;
             this.updateDuringDrag(this.deltaX);
-        }, { passive: false });
+        }, {passive: false});
 
         window.addEventListener("touchend", () => {
             isDragging = false;
@@ -147,26 +144,60 @@ class Carousel {
             carouselItem.style.backgroundImage = `url(${img_url})`;
         }
     }
+
     snapToClosestItem(deltaX) {
         const sampleItem = this.carousel_items[0];
         const itemWidth = sampleItem.offsetWidth || 100;
         const spacing = itemWidth * 0.5;
 
-        // Only snap if movement is big enough
-        if (Math.abs(deltaX) > spacing / 2) {
-            const direction = deltaX > 0 ? -1 : 1;
-            this.center_index = Math.max(0, Math.min(this.center_index + direction, this.carousel_items.length - 1));
-        }
+        const fractional_offset = -deltaX / spacing;
+        const direction = Math.round(fractional_offset);
 
+        if (direction !== 0) {
+            this.center_index = (this.center_index + direction + this.carousel_items.length) % this.carousel_items.length;
+        }
+        // Enable transition
+        for (const item of this.carousel_items) {
+            item.classList.add("transitioned-transform");
+        }
         this.update();
     }
 
-    updateDuringDrag(delta) {
+    renderVisibleItemsUsingVirtualIndex(virtualIndex) {
+        const items = this.carousel_items;
+        const count = items.length;
+        const itemWidth = items[0].offsetWidth || 100;
+        const spacing = itemWidth * 0.5;
+        const maxZIndex = getMaxZIndex(count);
+
         const containerRect = this.carousel_item_container.getBoundingClientRect();
         const outerRect = this.carousel_item_container.parentElement.getBoundingClientRect();
-        const centerPixel = (outerRect.left + outerRect.width / 2) - containerRect.left + delta;
+        const centerPixel = (outerRect.left + outerRect.width / 2) - containerRect.left;
 
-        this.renderVisibleItems(centerPixel);
+        for (let i = 0; i < count; i++) {
+            const item = items[i];
+            let offset = ((i - virtualIndex + count + count / 2) % count) - count / 2;
+
+
+            const translateX = centerPixel + offset * spacing - itemWidth / 2;
+            const scale = getScale(offset);
+            const opacity = getOpacity(offset);
+
+            item.style.zIndex = (maxZIndex - Math.abs(Math.round(offset))).toString();
+            item.style.filter = `brightness(${opacity})`;
+            item.style.transform = `translate(${translateX}px, -50%) scale(${scale})`;
+        }
+    }
+
+    updateDuringDrag(delta) {
+        const itemWidth = this.carousel_items[0].offsetWidth || 100;
+        const fractional_offset = -delta / (itemWidth*0.5);
+        for (const item of this.carousel_items) {
+            item.classList.remove("transitioned-transform");
+        }
+
+        const virtual_index = this.center_index + fractional_offset;
+        this.renderVisibleItemsUsingVirtualIndex(virtual_index);
     }
 
     update() {
@@ -202,11 +233,13 @@ class Carousel {
             const opacity = getOpacity(index_from_center);
             const translateX = centerPixel + index_from_center * spacing - itemWidth / 2;
 
+            item.classList.add("transitioned-transform");
             item.style.zIndex = (maxZIndex - Math.abs(index_from_center)).toString();
             item.style.filter = `brightness(${opacity})`;
             item.style.transform = `translate(${translateX}px, -50%) scale(${item_scale})`;
         }
     }
+
     /**
      * @param {1|-1} direction
      */
@@ -231,11 +264,11 @@ class Carousel {
         while (this.animation_queue.length > 0) {
             const direction = this.animation_queue.shift();
 
-                if (direction === -1) {
-                    this.center_index = (this.center_index - 1 + this.carousel_items.length) % this.carousel_items.length;
-                } else if (direction === 1) {
-                    this.center_index = (this.center_index + 1) % this.carousel_items.length;
-                }
+            if (direction === -1) {
+                this.center_index = (this.center_index - 1 + this.carousel_items.length) % this.carousel_items.length;
+            } else if (direction === 1) {
+                this.center_index = (this.center_index + 1) % this.carousel_items.length;
+            }
 
             this.update();
             await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));

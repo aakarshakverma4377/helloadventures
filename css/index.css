@@ -272,10 +272,6 @@
     height: 100vh;
 }
 .package-container h1{
-    text-align: center;
-    padding: 0.5em;
-}
-.package-container h1{
     padding: 1em 0.1em;
     font-size: 3em;
     z-index: 1;
@@ -285,6 +281,7 @@
     position: absolute;
     width: fit-content;
     max-width: max-content;
+    text-align: center;
 }
 .package-bg {
     height: 50%;
@@ -294,9 +291,12 @@
 
 .package-bg video {
     position: absolute;
-    width: 100%;
-    left: 50%; /* % of surrounding element */
     top: 50%;
-    transform: translate(-50%, -50%); /* % of current element */
-
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
 }
