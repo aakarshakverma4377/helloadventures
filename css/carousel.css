@@ -3,11 +3,21 @@
 
 }
 .carousel {
+    position: relative;
+    overflow: visible;
     display: flex;
-    justify-content: center;
-    align-content: center;
     height: 100%;
-    width: 100vw;
+    width: 100%;
+    flex: 1;
+    top: 0;
+    /*transform: translateY(-50%);*/
+}
+.carousel-item-container{
+    position: absolute;
+    top: 0;
+    width: inherit;
+    height: min(60vw,30vh);
+    transform: translateY(-50%);
 }
 
 .carousel-item {
@@ -22,25 +32,35 @@
     justify-content: end;
 
     /*height: 50vh;*/
-    width: min(60vw,60vh);
+    height: min(60vw,30vh);
     aspect-ratio: 16/9;
     /*max-width: 500px;*/
     /*max-height: 500px;*/
     filter: brightness(0.5);
-    opacity: 0;
+    opacity: 1;
 
     background-size: cover;
     background-color: var(--carousel-bg);
     color: var(--text-on-carousel-color);
 
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.37);
     border-radius: var(--border-radius);
 
     will-change: z-index;
-    transform: translateY(-50%) translateX(-50%);
-    transition: all 500ms var(--stretch-bezeir-curve);
+    /*transform: translateY(-50%) translateX(-50%);*/
+    transition: transform 250ms ease-in-out,
+    box-shadow 250ms ease-in-out,
+    filter 250ms ease-in-out,
+    z-index 250ms ease-in-out;
 
     overflow: hidden;
 
+}
+.carousel-item.selected {
+    pointer-events: all;
+    /*transform: scale(1) translateY(-50%) !important;*/
+    filter: brightness(1) !important;
+    box-shadow: 0 0 100px 10px #000;
 }
 
 
@@ -57,22 +77,17 @@
     color: var(--text-color-primary);
 }
 
-.carousel-item.selected {
-    pointer-events: all;
-    /*transform: scale(1) translateY(-50%) !important;*/
-    filter: brightness(1) !important;
-    box-shadow: 0 0 100px 10px #000;
-}
 
 .carousel-button {
     background-color: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(1px);
+    /*backdrop-filter: blur(1px);*/
     position: absolute;
     width: 5vw;
     min-width: 30px;
-    height: 100vh;
+    height: fit-content;
     top: 0;
-    border-radius: 0;
+    transform: translateY(-50%);
+    border-radius: var(--border-radius);
     transition: background-color 250ms ease-in-out, opacity 250ms, backdrop-filter 250ms ease-in-out;
 }
 

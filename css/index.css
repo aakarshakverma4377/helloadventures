@@ -24,6 +24,7 @@
 }
 
 #menu-btn {
+    color: var(--text-color-primary);
     background: transparent;
     padding: 0.5em;
     position: absolute;
@@ -35,7 +36,7 @@
     transition: transform 100ms  ease-in-out;
 }
 #menu-btn.hidden{
-    transform: translateX(0%);
+    transform: translateY(-100%);
 }
 
 #menu-btn:hover {
@@ -43,13 +44,14 @@
 }
 
 .navbar {
-    padding-top: 100px;
     position: fixed;
     background-color: var(--navbar-bg-color);
     display: flex;
+    flex-direction: column;
     width: 300px;
     max-width: 80vw;
     height: 100vh;
+    max-height: 100vh;
     justify-content: space-between;
     z-index: 999999;
     transition: 250ms transform ease-in-out;
@@ -72,9 +74,8 @@
     color: inherit;
     list-style: none;
     width: 100%;
-    height: fit-content;
-    transform: translateY(-50%);
-    margin-top: 50%;
+    height: min-content;
+    overflow-y: scroll;
 }
 
 .nav-links li {
@@ -120,32 +121,13 @@
     background-image: linear-gradient(to bottom, var(--overlay-color) 20%, rgba(0, 0, 0, 0) 80%);
 }
 
-/*-------------------------------------------------------------------------------------------------------
-/*------------------------------------------- ABOUT -----------------------------------------------------
-/*-------------------------------------------------------------------------------------------------------
-*/
-
-#about{
-    height: fit-content;
-    display: flex;
-    bottom: 0;
-    padding: 5em;
-    color: var(--text-color-primary);
-    width: 100%;
-    justify-content: center;
-}
-#about p {
-    display: block;
-    width: 100ch;
-    text-align: center;
-}
 
 /*-------------------------------------------------------------------------------------------------------
 /*------------------------------------ SOCIAL ICONS -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------*/
 
 #socials {
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     height: fit-content;
@@ -189,16 +171,30 @@
 
 }
 /*-------------------------------------------------------------------------------------------------------
+/*------------------------------------------- ABOUT -----------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------
+*/
+
+#about{
+    height: fit-content;
+    display: flex;
+    bottom: 0;
+    padding: 5em;
+    color: var(--text-color-primary);
+    width: 100%;
+    justify-content: center;
+}
+#about p {
+    display: block;
+    width: 100ch;
+    text-align: center;
+}
+
+/*-------------------------------------------------------------------------------------------------------
 /*------------------------------------------- Packages -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------
 */
-.package-container{
 
-}
-.package-container h1{
-    text-align: center;
-    padding: 0.5em;
-}
 /*-------------------------------------------------------------------------------------------------------
 /*------------------------------------------- CARDS -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------
@@ -266,6 +262,18 @@
 /*------------------------------------------- Packages BG Videos -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------
 */
+.package-container{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+}
+.package-container h1{
+    text-align: center;
+    padding: 0.5em;
+}
 .package-container h1{
     padding: 1em 0.1em;
     font-size: 3em;

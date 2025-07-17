@@ -101,13 +101,13 @@ class Carousel {
 
         this.carousel_item_container = item_container;
 
-        window.addEventListener("resize", () => {
-            for (const carouselItem of this.carousel_items) {
-                carouselItem.style.filter = "";
-                carouselItem.style.transform = "";
-                carouselItem.style.opacity = "";
-                carouselItem.style.visibility = "";
-                carouselItem.style.zIndex = "";
+        window.addEventListener("resize", (e) => {
+            for (const item of this.carousel_items) {
+                item.style.visibility = "";
+                item.style.opacity = "";
+                item.style.zIndex = "";
+                item.style.filter = "";
+                item.style.transform = "";
             }
             this.update();
             this.updateImages();
@@ -118,21 +118,18 @@ class Carousel {
     }
 
 
-    getVisibleIndices(window_size = this.visible_side_items_count) {
-        let indices = [];
-        for (let i = -window_size; i <= window_size; i++) {
-            let idx = (this.center_index + i + this.carousel_items.length) % this.carousel_items.length;
-            indices.push(idx);
-        }
-        return indices;
-    }
+    // getVisibleIndices(window_size = this.visible_side_items_count) {
+    //     let indices = [];
+    //     for (let i = -window_size; i <= window_size; i++) {
+    //         let idx = (this.center_index + i + this.carousel_items.length) % this.carousel_items.length;
+    //         indices.push(idx);
+    //     }
+    //     return indices;
+    // }
 
     updateImages() {
         for (const carouselItem of this.carousel_items) {
             let img_url = carouselItem.getAttribute(isPortrait() ? "portrait" : "landscape");
-            if (img_url === "") {
-                img_url = carouselItem.getAttribute("landscape");
-            }
             carouselItem.style.backgroundImage = `url(${img_url})`;
         }
     }
@@ -165,65 +162,51 @@ class Carousel {
 
 
     update() {
-        this.radius = Math.floor(window.innerWidth / 2);
+        const items = this.carousel_items;
+        const count = items.length;
+        if (count === 0) return;
 
-        let window_size = this.carousel_items.length / 2 > this.visible_side_items_count
-            ? this.visible_side_items_count
-            : Math.floor(this.carousel_items.length / 2);
-        if (window_size === 0) window_size = 1;
+        const container = this.carousel_item_container;
+        const outer = container.parentElement;
 
-        const visible_indices = this.getVisibleIndices(window_size);
-        const maxZIndex = getMaxZIndex(this.carousel_items.length);
-        const visible_indices_set = new Set(visible_indices);
-
-        const sampleItem = this.carousel_items[0];
+        const sampleItem = items[0];
         const itemWidth = sampleItem.offsetWidth || 100;
+        const maxZIndex = getMaxZIndex(count);
 
-// smaller spacingFactor = more overlap (e.g., 0.4 = 60% overlap)
-        const overlapFactor = isPortrait() ? 0.8 : 1;
+        const containerRect = this.carousel_item_container.getBoundingClientRect();
+        const outerRect = this.carousel_item_container.parentElement.getBoundingClientRect();
+        const centerPixel = (outerRect.left + outerRect.width / 2) - containerRect.left;
 
-        console.log(visible_indices, this.center_index);
-// this.radius is already set
-        const angleStep = overlapFactor * 2 * Math.asin((itemWidth * 0.5) / this.radius);
-        for (const real_index of visible_indices) {
-            const i1 = visible_indices.indexOf(real_index);
-            const index_from_center = i1 - window_size;
-            const item = this.carousel_items[real_index];
+        const visibleRange = Math.floor(count / 2);
+        const spacing = itemWidth * 0.5;
 
 
+
+        // Show only visible range
+        for (let offset = -visibleRange; offset <= visibleRange; offset++) {
+            const index = (this.center_index + offset + count) % count;
+            const item = items[index];
+
+            const index_from_center = offset;
             const item_scale = getScale(index_from_center);
-
-            const angle = index_from_center * angleStep;
-            const translateX = this.radius * Math.sin(angle);
-
             const opacity = getOpacity(index_from_center);
-            item.style.visibility = "visible";
-            item.style.opacity = "1";
-            item.style.zIndex = Math.abs(maxZIndex - Math.abs(index_from_center)).toString();
-            item.style.filter = `brightness(${opacity})`;
-            item.style.transform = ` translate(-50%, -50%) scale(${item_scale}) translateX(${translateX}px)`;
-            visible_indices_set.add(real_index);
-        }
 
-        for (const item of this.carousel_items) {
-            const idx = this.carousel_items.indexOf(item);
-            if (!visible_indices_set.has(idx)) {
-                console.log("Resetting");
-                item.style.zIndex = "";
-                item.style.filter = "";
-                item.style.opacity = "";
-                item.style.visibility = "";
-                item.style.transform = "";
-            }
+            const translateX = centerPixel + index_from_center * spacing - itemWidth / 2;
+
+            item.style.zIndex = (maxZIndex - Math.abs(index_from_center)).toString();
+            item.style.filter = `brightness(${opacity})`;
+            item.style.transform = `translate(${translateX}px, -50%) scale(${item_scale})`;
         }
 
         const id = this.getItemId(this.center_index);
         this.selected_item?.classList.remove("selected");
         this.selected_item = document.getElementById(id);
         this.selected_item?.classList.add("selected");
-
-
     }
+
+
+
+
 
     resizeCarousel() {
         const container = this.carousel_item_container;

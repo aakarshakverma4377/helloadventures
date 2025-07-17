@@ -4,7 +4,6 @@
     padding:0;
     box-sizing: border-box;
     transition: background-color 250ms ease, color 250ms ease;
-    color: var(--text-on-background-color);
     font-family:"Roboto",Arial, Helvetica, sans-serif;
 }
 body {
@@ -33,6 +32,7 @@ section:nth-child(odd){
     background-color: var(--section-color-bg-odd);
 }
 p{
+    color: #000;
     max-width: 100ch;
     font-size: 1.5em;
 }
