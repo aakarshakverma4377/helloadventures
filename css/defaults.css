@@ -6,6 +6,10 @@
     transition: background-color 250ms ease, color 250ms ease;
     font-family:"Roboto",Arial, Helvetica, sans-serif;
 }
+html{
+    overflow-x: hidden;
+    max-width: 100vw;
+}
 body {
     background-color: var(--surface-bg-color);
     overflow-x: hidden;

@@ -48,7 +48,7 @@
     background-color: var(--navbar-bg-color);
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: max-content;
     max-width: 80vw;
     height: 100vh;
     max-height: 100vh;
@@ -79,9 +79,10 @@
 }
 
 .nav-links li {
-    padding: 1em 1em;
+    padding: 1em 2em;
+    width: 300px;
     text-align: center;
-    width: 100%;
+    max-width: 100%;
 }
 
 .nav-links li:hover {
