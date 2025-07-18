@@ -38,12 +38,10 @@ function toTitleCase(str) {
 }
 
 function isPortrait() {
-    return window.innerWidth <= 700;
+    return window.innerHeight > window.innerWidth;
 }
 
 class Carousel {
-    radius = 200;
-    visible_side_items_count = 2;
     animation_time_ms = 250;
 
     constructor(el_id, data) {
@@ -54,7 +52,6 @@ class Carousel {
         // this.el = document.getElementById(el_id)
         this.data = data;
         this.carousel_items = [];
-
 
         const parent = document.getElementById(el_id);
         const outer = document.createElement("div");
@@ -112,20 +109,40 @@ class Carousel {
             this.update();
             this.updateImages();
         });
+
+        console.log(this.carousel_item_container);
+        this.startX = 0;
+        this.deltaX = 0;
+        this.isDragging = false;
+
+        this.carousel_item_container.addEventListener("touchstart", (e) => {
+            this.isDragging = true;
+            this.startX = e.touches[0].clientX;
+            this.deltaX = 0;
+        });
+
+        this.carousel_item_container.addEventListener("touchmove", (e) => {
+            if (!this.isDragging) return;
+
+            this.deltaX = e.touches[0].clientX - this.startX;
+            if(Math.abs(this.deltaX)>0.1){
+                e.preventDefault();
+                this.updateDuringDrag(this.deltaX);
+            }
+        }, {passive: false, capture: true});
+
+        window.addEventListener("touchend", () => {
+            if(this.isDragging){
+                this.isDragging = false;
+                this.snapToClosestItem(this.deltaX);
+            }
+
+        });
         this.update();
         this.updateImages();
 
     }
 
-
-    // getVisibleIndices(window_size = this.visible_side_items_count) {
-    //     let indices = [];
-    //     for (let i = -window_size; i <= window_size; i++) {
-    //         let idx = (this.center_index + i + this.carousel_items.length) % this.carousel_items.length;
-    //         indices.push(idx);
-    //     }
-    //     return indices;
-    // }
 
     updateImages() {
         for (const carouselItem of this.carousel_items) {
@@ -134,69 +151,70 @@ class Carousel {
         }
     }
 
-    updateDesktopLayout(direction) {
-        const container = this.carousel_item_container;
-        const items = this.carousel_items;
-        const outer = container.parentElement;
-        if (!items.length) return;
+    snapToClosestItem(deltaX) {
+        const sampleItem = this.carousel_items[0];
+        const itemWidth = sampleItem.offsetWidth || 100;
+        const spacing = itemWidth * 0.5;
 
-        const itemW = items[0].offsetWidth;
-        const outerW = outer.clientWidth;
-        const totalW = container.scrollWidth;
+        const fractional_offset = -deltaX / spacing;
+        const direction = Math.round(fractional_offset);
 
-        // exact maximum scroll so last item is fully visible
-        const maxOffset = Math.max(0, totalW - outerW);
-
-        // compute next offset by one item width
-        const prevOffset = this.current_offset || 0;
-        let newOffset = prevOffset + direction * itemW;
-
-        // clamp between 0 and the true maxOffset
-        newOffset = Math.max(0, Math.min(newOffset, maxOffset));
-
-        container.style.transform = `translateX(${-newOffset}px)`;
-        this.current_offset = newOffset;
-
-        console.log("Offset:", newOffset, "of", maxOffset);
+        if (direction !== 0) {
+            this.center_index = (this.center_index + direction + this.carousel_items.length) % this.carousel_items.length;
+        }
+        // Enable transition
+        for (const item of this.carousel_items) {
+            item.classList.add("transitioned-transform");
+        }
+        this.update();
     }
 
-
-    update() {
+    renderVisibleItemsUsingVirtualIndex(virtualIndex) {
         const items = this.carousel_items;
         const count = items.length;
-        if (count === 0) return;
-
-        const container = this.carousel_item_container;
-        const outer = container.parentElement;
-
-        const sampleItem = items[0];
-        const itemWidth = sampleItem.offsetWidth || 100;
+        const itemWidth = items[0].offsetWidth || 100;
+        const spacing = itemWidth * 0.5;
         const maxZIndex = getMaxZIndex(count);
 
         const containerRect = this.carousel_item_container.getBoundingClientRect();
         const outerRect = this.carousel_item_container.parentElement.getBoundingClientRect();
         const centerPixel = (outerRect.left + outerRect.width / 2) - containerRect.left;
 
-        const visibleRange = Math.floor(count / 2);
-        const spacing = itemWidth * 0.5;
+        for (let i = 0; i < count; i++) {
+            const item = items[i];
+            let offset = ((i - virtualIndex + count + count / 2) % count) - count / 2;
 
 
+            const translateX = centerPixel + offset * spacing - itemWidth / 2;
+            const scale = getScale(offset);
+            const opacity = getOpacity(offset);
 
-        // Show only visible range
-        for (let offset = -visibleRange; offset <= visibleRange; offset++) {
-            const index = (this.center_index + offset + count) % count;
-            const item = items[index];
-
-            const index_from_center = offset;
-            const item_scale = getScale(index_from_center);
-            const opacity = getOpacity(index_from_center);
-
-            const translateX = centerPixel + index_from_center * spacing - itemWidth / 2;
-
-            item.style.zIndex = (maxZIndex - Math.abs(index_from_center)).toString();
+            item.style.zIndex = (maxZIndex - Math.abs(Math.round(offset))).toString();
             item.style.filter = `brightness(${opacity})`;
-            item.style.transform = `translate(${translateX}px, -50%) scale(${item_scale})`;
+            item.style.transform = `translate(${translateX}px, -50%) scale(${scale})`;
         }
+    }
+
+    updateDuringDrag(delta) {
+        const itemWidth = this.carousel_items[0].offsetWidth || 100;
+        const fractional_offset = -delta / (itemWidth * 0.5);
+        for (const item of this.carousel_items) {
+            item.classList.remove("transitioned-transform");
+        }
+
+        const virtual_index = this.center_index + fractional_offset;
+        this.renderVisibleItemsUsingVirtualIndex(virtual_index);
+    }
+
+    update() {
+        const count = this.carousel_items.length;
+        if (count === 0) return;
+
+        const containerRect = this.carousel_item_container.getBoundingClientRect();
+        const outerRect = this.carousel_item_container.parentElement.getBoundingClientRect();
+        const centerPixel = (outerRect.left + outerRect.width / 2) - containerRect.left;
+
+        this.renderVisibleItems(centerPixel);
 
         const id = this.getItemId(this.center_index);
         this.selected_item?.classList.remove("selected");
@@ -204,22 +222,28 @@ class Carousel {
         this.selected_item?.classList.add("selected");
     }
 
+    renderVisibleItems(centerPixel) {
+        const items = this.carousel_items;
+        const count = items.length;
+        const itemWidth = items[0].offsetWidth || 100;
+        const spacing = itemWidth * 0.5;
+        const visibleRange = Math.floor(count / 2);
+        const maxZIndex = getMaxZIndex(count);
 
+        for (let offset = -visibleRange; offset <= visibleRange; offset++) {
+            const index = (this.center_index + offset + count) % count;
+            const item = items[index];
 
+            const index_from_center = offset;
+            const item_scale = getScale(index_from_center);
+            const opacity = getOpacity(index_from_center);
+            const translateX = centerPixel + index_from_center * spacing - itemWidth / 2;
 
-
-    resizeCarousel() {
-        const container = this.carousel_item_container;
-
-        let totalWidth = 0;
-
-        for (let i = 0; i < this.carousel_items.length; i++) {
-            const item = this.carousel_items[i];
-            totalWidth += item.offsetWidth;
+            item.classList.add("transitioned-transform");
+            item.style.zIndex = (maxZIndex - Math.abs(index_from_center)).toString();
+            item.style.filter = `brightness(${opacity})`;
+            item.style.transform = `translate(${translateX}px, -50%) scale(${item_scale})`;
         }
-
-        container.style.width = `${totalWidth}px`;
-        console.log("width", totalWidth);
     }
 
     /**
@@ -246,11 +270,11 @@ class Carousel {
         while (this.animation_queue.length > 0) {
             const direction = this.animation_queue.shift();
 
-                if (direction === -1) {
-                    this.center_index = (this.center_index - 1 + this.carousel_items.length) % this.carousel_items.length;
-                } else if (direction === 1) {
-                    this.center_index = (this.center_index + 1) % this.carousel_items.length;
-                }
+            if (direction === -1) {
+                this.center_index = (this.center_index - 1 + this.carousel_items.length) % this.carousel_items.length;
+            } else if (direction === 1) {
+                this.center_index = (this.center_index + 1) % this.carousel_items.length;
+            }
 
             this.update();
             await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));

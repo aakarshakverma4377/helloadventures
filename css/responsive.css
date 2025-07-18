@@ -1,25 +1,47 @@
-@media (pointer:coarse) {
-    .carousel-button {
-        height: 50px;
-        width: 50px;
-        backdrop-filter: blur(10px);
-        top: 50%;
-        transform: translateY(-50%);
-        border-radius: var(--border-radius);
+@media (pointer: coarse) {
+    .carousel-button{
+        display: none;
     }
+}
+@media (orientation: portrait){
+    #about{
+        padding: 1em;
+    }
+    .package-bg {
+        height: 100%;
+    }
+    .package-bg video{
+        filter: brightness(0.5);
+    }
+    .package-container h1 {
+        font-size: 2em;
+    }
+    .carousel-item {
+        height: auto;
+        max-height: unset;
+        width: 90vw;
+        max-width: 800px;
+        /*max-height: 70vh;*/
+        aspect-ratio: 4/5;
+    }
+
+    .carousel-item-container {
+        position: absolute;
+        top: 0;
+        width: inherit;
+        height: calc(80vw * 5 / 4);
+        transform: translateY(-50%);
+    }
+
 }
 
 
-@media only screen and (max-width: 700px) {
-    .carousel-item {
-        aspect-ratio: 4/5;
-        width: 80vw;
-    }
-
-
+    /*.package-bg video{*/
+    /*    width: auto;*/
+    /*    height: 100%;*/
+    /*}*/
     /*.carousel-item > div > h2 {*/
     /*    font-size: 1em;*/
     /*    padding: 0.5em 0.5em 0.1em 0.8em;*/
     /*    color: var(--text-color-primary);*/
     /*}*/
-}
