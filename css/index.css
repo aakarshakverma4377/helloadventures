@@ -54,13 +54,13 @@
     width: max-content;
     max-width: 80vw;
     height: 100vh;
-    max-height: 100vh;
+    max-height: 100dvh;
     justify-content: space-between;
     z-index: 999999;
-    transition: 250ms transform ease-in-out;
     font-size: 1.5em;
     right: 0;
     top: 0;
+    transition: 250ms transform ease-in-out,250ms height ease-in-out;
 }
 
 
@@ -139,6 +139,7 @@
     justify-content: center;
     align-content: center;
     gap: 1em;
+    padding: 1em;
 }
 
 #socials .social-icon {
