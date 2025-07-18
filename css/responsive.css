@@ -15,12 +15,12 @@
     }
     .package-container h2{
         margin-top: 30%;
-        font-size:40px;
+        font-size:20px;
     }
     .carousel-item {
         height: 50vh;
         /*max-height: unset;*/
-        min-width: 400px;
+        min-width: 100px;
         max-width: 90vw;
         max-height: 70vh;
         aspect-ratio: 9/16;
