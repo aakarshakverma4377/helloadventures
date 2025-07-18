@@ -246,14 +246,14 @@
 }
 
 .package-bg h1 {
-    padding: 1em 0 0 0;
-    font-size: 3em;
+    padding: 0.5em 0 0 0;
+    font-size: 2em;
     z-index: 1;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     position: relative;
-    width: max-content;
+    width: min-content;
     max-width: 100vw;
     text-align: center;
 }
