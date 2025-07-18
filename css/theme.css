@@ -1,4 +1,9 @@
 :root{
+    --surface-bg-color: #e69c67;
+    --surface-bg-color-shade: #e8b28c;
+
+
+
     --border-color: rgba(0, 0, 0, 0.52);
     --overlay-color: rgba(97, 72, 51, 0.73);
     --section-color-bg-even: #ffffff;
@@ -6,7 +11,6 @@
     --primary-color: #0d0053;
     --tooltip-color:#000;
     --primary-color-hover: #bb88fa;
-    --surface-bg-color: #f6cc99;
     --navbar-text-color: #ffffff;
     --navbar-bg-color:#1d1d1d;
     /* === BUTTON COLORS === */

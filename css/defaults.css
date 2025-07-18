@@ -11,7 +11,6 @@ html{
     max-width: 100vw;
 }
 body {
-    background-color: var(--surface-bg-color);
     overflow-x: hidden;
 }
 
@@ -28,12 +27,6 @@ section{
     width:100vw;
     /*padding: 1em;*/
     position: relative;
-}
-section:nth-child(even){
-    background-color: var(--section-color-bg-even);
-}
-section:nth-child(odd){
-    background-color: var(--section-color-bg-odd);
 }
 p{
     color: inherit;
