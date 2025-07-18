@@ -179,6 +179,7 @@
 */
 
 .hero {
+    user-select: none;
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -214,14 +215,14 @@
     width: min-content;
     max-width: 100%;
     text-align: left;
-    font-size:max(3em,10vw);
+    font-size:min(max(3em,10vw),10vh);
     padding: 0;
 }
 
 #about {
     /*text-shadow: 1px 0 2px #000,0 0 2px #000,0 0 2px #000,0 0 2px #000;*/
     padding-top: 1em;
-    font-size: max(0.9em,2vw);
+    font-size:min(max(0.9em,2vw),2vh);
     text-align: left;
     width: 50ch;
     max-width: 100%;
@@ -263,7 +264,7 @@
     height: 100%;
     width: 100%;
     z-index: 0;
-    background-image: linear-gradient(to bottom,var(--surface-bg-color) 5%, transparent 40% 80%, var(--surface-bg-color) 100%);
+    background-image: linear-gradient(to bottom,var(--surface-bg-color) 5%, transparent 40% 80%, var(--surface-bg-color-shade) 100%);
 }
 .package-bg {
     height: 50%;
