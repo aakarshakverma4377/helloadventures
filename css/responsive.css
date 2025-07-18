@@ -4,7 +4,7 @@
     }
 }
 @media (orientation: portrait){
-    .package-container video{
+    .package-container video, .package-video-overlay{
         display: none;
     }
     .package-bg {
