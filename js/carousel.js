@@ -70,7 +70,7 @@ class Carousel {
             bg_el.rel = "noopener noreferrer";
             bg_el.setAttribute("landscape", entry.img_landscape);
             bg_el.setAttribute("portrait", entry.img_portrait);
-            heading_el.innerText = toTitleCase(key);
+            heading_el.innerText = isPortrait() ? key.toUpperCase() : toTitleCase(key);
 
             bg_el.append(heading_el);
             item_container.appendChild(bg_el);
@@ -226,7 +226,7 @@ class Carousel {
         const items = this.carousel_items;
         const count = items.length;
         const itemWidth = items[0].offsetWidth || 100;
-        const spacing = itemWidth * 0.5;
+        const spacing = itemWidth * ( isPortrait()? 0.2: 0.5);
         const visibleRange = Math.floor(count / 2);
         const maxZIndex = getMaxZIndex(count);
 

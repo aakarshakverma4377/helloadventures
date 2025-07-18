@@ -4,8 +4,8 @@
     }
 }
 @media (orientation: portrait){
-    #about{
-        padding: 1em;
+    .package-container video{
+        display: none;
     }
     .package-bg {
         height: 100%;
@@ -13,16 +13,17 @@
     .package-bg video{
         filter: brightness(0.5);
     }
-    .package-container h1 {
-        font-size: 2em;
+    .package-container h2{
+        margin-top: 30%;
+        font-size:40px;
     }
     .carousel-item {
-        height: auto;
-        max-height: unset;
-        width: 90vw;
-        max-width: 800px;
-        /*max-height: 70vh;*/
-        aspect-ratio: 4/5;
+        height: 50vh;
+        /*max-height: unset;*/
+        min-width: 400px;
+        max-width: 90vw;
+        max-height: 70vh;
+        aspect-ratio: 9/16;
     }
 
     .carousel-item-container {

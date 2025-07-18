@@ -1,10 +1,15 @@
+:root{
+    --menu-btn-size:70px;
+}
 /*-------------------------------------------------------------------------------------------------------
 /*------------------------------------ HERO SECTION -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------*/
-#page-overlay{
+#page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     height: 100vh;
     width: 100vw;
-    position: fixed;
     z-index: 999998;
     background-color: rgba(0, 0, 0, 0.39);
     backdrop-filter: blur(10px);
@@ -13,15 +18,12 @@
     cursor: url("cursor.svg"), default;
     transition: all 250ms;
 }
-#page-overlay.hidden{
+
+#page-overlay.hidden {
     opacity: 0;
     transform: translateX(100%);
 }
 
-.hero {
-    width: 100vw;
-    height: 100vh;
-}
 
 #menu-btn {
     color: var(--text-color-primary);
@@ -31,11 +33,12 @@
     top: 0;
     right: 0;
     z-index: 9999999;
-    height: 70px;
-    width: 70px;
-    transition: transform 100ms  ease-in-out;
+    height: var(--menu-btn-size);
+    width: var(--menu-btn-size);
+    transition: transform 100ms ease-in-out;
 }
-#menu-btn.hidden{
+
+#menu-btn.hidden {
     transform: translateY(-100%);
 }
 
@@ -57,12 +60,12 @@
     transition: 250ms transform ease-in-out;
     font-size: 1.5em;
     right: 0;
+    top: 0;
 }
 
 
 .navbar.hidden {
     transform: translateX(100%);
-
 }
 
 .navbar * {
@@ -75,7 +78,7 @@
     list-style: none;
     width: 100%;
     height: min-content;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .nav-links li {
@@ -110,7 +113,6 @@
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -1;
 }
 
 .video-overlay {
@@ -119,21 +121,20 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(to bottom, var(--overlay-color) 20%, rgba(0, 0, 0, 0) 80%);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.44) 30%, rgba(0, 0, 0, 0) 80%);
 }
 
 
 /*-------------------------------------------------------------------------------------------------------
 /*------------------------------------ SOCIAL ICONS -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------*/
-
 #socials {
     position: relative;
     bottom: 0;
     left: 0;
     height: fit-content;
     width: 100%;
-    padding: 1em;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -171,110 +172,81 @@
     pointer-events: none
 
 }
+
 /*-------------------------------------------------------------------------------------------------------
-/*------------------------------------------- ABOUT -----------------------------------------------------
+/*------------------------------------------- HERO -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------
 */
 
-#about{
-    height: fit-content;
+.hero {
     display: flex;
-    bottom: 0;
-    padding: 5em;
-    color: var(--text-color-primary);
-    width: 100%;
-    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--overlay-color);
+    overflow: hidden;
 }
-#about p {
+.hero img{
+    margin: 1.2em 0 0 1em;
+    height:var(--menu-btn-size);
+    /*aspect-ratio: 2;*/
+    transform: scale(1.6);
+    /*background-color: #fff;*/
+
+    /*padding-bottom: 1em;*/
+}
+#intro {
     display: block;
-    width: 100ch;
-    text-align: center;
+    position: absolute;
+    height: fit-content;
+    bottom: 0;
+    width: 100%;
+    padding: 1em 2em;
+    z-index: 1;
+    color: #fff;
+    /*top: 12%;*/
+    /*top: 50%;*/
+    transform: translateY(-0%);
 }
+
+#logo {
+    font-family: "Sansation", sans-serif;
+    line-height: 90%;
+    width: min-content;
+    max-width: 100%;
+    text-align: left;
+    font-size: 10vw;
+    padding: 0;
+}
+
+#about {
+    /*text-shadow: 1px 0 2px #000,0 0 2px #000,0 0 2px #000,0 0 2px #000;*/
+    padding-top: 1em;
+    font-size: 2vw;
+    min-font-size: 1em;
+    text-align: left;
+    width: 50ch;
+    max-width: 100%;
+}
+
 
 /*-------------------------------------------------------------------------------------------------------
 /*------------------------------------------- Packages -----------------------------------------------------
 /*-------------------------------------------------------------------------------------------------------
 */
-
-/*-------------------------------------------------------------------------------------------------------
-/*------------------------------------------- CARDS -----------------------------------------------------
-/*-------------------------------------------------------------------------------------------------------
-*/
-
-.card-container {
-    display: flex;
-    gap: 40px; /* space between cards */
-    flex-wrap: wrap; /* wrap on small screens */
-    justify-content: center;
-}
-
-.card {
-    display: flex;
-    background-color: #e1e2bb;
-    padding: 20px;
-    max-width: 600px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.card img {
-    width: 250px;
-    height: auto;
-    object-fit: cover;
-    margin-right: 20px;
-}
-
-.card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card-content h2 {
-    margin: 0;
-    font-size: 28px;
-    color: #333;
-}
-
-.card-content p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-    margin: 15px 0;
-}
-
-.card-content button {
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.card-content button:hover {
-    background-color: #222;
-}
-
-
-.color {
-    color: #ffffff;
-}
-/*-------------------------------------------------------------------------------------------------------
-/*------------------------------------------- Packages BG Videos -----------------------------------------------------
-/*-------------------------------------------------------------------------------------------------------
-*/
-.package-container{
+.package-container {
     display: flex;
     flex-direction: column;
     padding: 0;
     overflow: hidden;
     position: relative;
-    height: 100vh;
+    /*height: 100%;*/
     min-height: 500px;
     max-height: 1500px;
+    width: 100vw;
 }
-.package-bg h1{
-    padding: 1em 0 0 0 ;
+
+.package-bg h1 {
+    padding: 1em 0 0 0;
     font-size: 3em;
     z-index: 1;
     top: 0;
@@ -285,10 +257,11 @@
     max-width: 100vw;
     text-align: center;
 }
+
 .package-bg {
     height: 50%;
     position: relative;
-    overflow:  hidden;
+    overflow: hidden;
 }
 
 .package-bg video {
