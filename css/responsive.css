@@ -34,6 +34,10 @@
         transform: translateY(-50%);
     }
 
+    .package-container video{
+        display: none;
+    }
+
 }
 
 
