@@ -99,7 +99,7 @@
 
 
 .carousel-button {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.11);
     /*backdrop-filter: blur(1px);*/
     position: absolute;
     width: 5vw;
@@ -113,7 +113,7 @@
 }
 
 .carousel-button:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(10px);
 }
 

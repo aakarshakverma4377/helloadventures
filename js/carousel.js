@@ -62,7 +62,7 @@ class Carousel {
         for (let i = 0; i < entries.length; i++) {
             const [key, entry] = entries[i];
             const bg_el = document.createElement("a");
-            const heading_el = document.createElement("h2");
+            const heading_el = document.createElement("svg");
             bg_el.id = this.getItemId(i);
             bg_el.classList.add("carousel-item");
             bg_el.href = entry.link;
@@ -70,7 +70,7 @@ class Carousel {
             bg_el.rel = "noopener noreferrer";
             bg_el.setAttribute("landscape", entry.img_landscape);
             bg_el.setAttribute("portrait", entry.img_portrait);
-            heading_el.innerText = isPortrait() ? key.toUpperCase() : toTitleCase(key);
+            heading_el.innerHTML = "<text font-family=''>" + (isPortrait() ? key.toUpperCase() : toTitleCase(key)) + "<text/>";
 
             bg_el.append(heading_el);
             item_container.appendChild(bg_el);
@@ -125,16 +125,21 @@ class Carousel {
             if (!this.isDragging) return;
 
             this.deltaX = e.touches[0].clientX - this.startX;
-            if(Math.abs(this.deltaX)>0.1){
+            const drag_dist = Math.abs(this.deltaX);
+            if (drag_dist > 0.1) {
+                if(drag_dist < this.carousel_items[0].offsetWidth/2)
+                    return;
+                this.startX = e.touches[0].clientX;
+                this.enqueueMove(-Math.sign(this.deltaX));
+                this.deltaX = 0;
                 e.preventDefault();
-                this.updateDuringDrag(this.deltaX);
             }
         }, {passive: false, capture: true});
 
         window.addEventListener("touchend", () => {
-            if(this.isDragging){
+            if (this.isDragging) {
                 this.isDragging = false;
-                this.snapToClosestItem(this.deltaX);
+                // this.snapToClosestItem(this.deltaX);
             }
 
         });
@@ -143,6 +148,9 @@ class Carousel {
 
     }
 
+    getSpacingRatio() {
+        return (isPortrait() ? 0.2 : 0.5);
+    }
 
     updateImages() {
         for (const carouselItem of this.carousel_items) {
@@ -151,60 +159,9 @@ class Carousel {
         }
     }
 
-    snapToClosestItem(deltaX) {
-        const sampleItem = this.carousel_items[0];
-        const itemWidth = sampleItem.offsetWidth || 100;
-        const spacing = itemWidth * 0.5;
-
-        const fractional_offset = -deltaX / spacing;
-        const direction = Math.round(fractional_offset);
-
-        if (direction !== 0) {
-            this.center_index = (this.center_index + direction + this.carousel_items.length) % this.carousel_items.length;
-        }
-        // Enable transition
-        for (const item of this.carousel_items) {
-            item.classList.add("transitioned-transform");
-        }
-        this.update();
-    }
-
-    renderVisibleItemsUsingVirtualIndex(virtualIndex) {
-        const items = this.carousel_items;
-        const count = items.length;
-        const itemWidth = items[0].offsetWidth || 100;
-        const spacing = itemWidth * 0.5;
-        const maxZIndex = getMaxZIndex(count);
-
-        const containerRect = this.carousel_item_container.getBoundingClientRect();
-        const outerRect = this.carousel_item_container.parentElement.getBoundingClientRect();
-        const centerPixel = (outerRect.left + outerRect.width / 2) - containerRect.left;
-
-        for (let i = 0; i < count; i++) {
-            const item = items[i];
-            let offset = ((i - virtualIndex + count + count / 2) % count) - count / 2;
 
 
-            const translateX = centerPixel + offset * spacing - itemWidth / 2;
-            const scale = getScale(offset);
-            const opacity = getOpacity(offset);
 
-            item.style.zIndex = (maxZIndex - Math.abs(Math.round(offset))).toString();
-            item.style.filter = `brightness(${opacity})`;
-            item.style.transform = `translate(${translateX}px, -50%) scale(${scale})`;
-        }
-    }
-
-    updateDuringDrag(delta) {
-        const itemWidth = this.carousel_items[0].offsetWidth || 100;
-        const fractional_offset = -delta / (itemWidth * 0.5);
-        for (const item of this.carousel_items) {
-            item.classList.remove("transitioned-transform");
-        }
-
-        const virtual_index = this.center_index + fractional_offset;
-        this.renderVisibleItemsUsingVirtualIndex(virtual_index);
-    }
 
     update() {
         const count = this.carousel_items.length;
@@ -226,13 +183,17 @@ class Carousel {
         const items = this.carousel_items;
         const count = items.length;
         const itemWidth = items[0].offsetWidth || 100;
-        const spacing = itemWidth * ( isPortrait()? 0.2: 0.5);
+        const spacing = itemWidth * this.getSpacingRatio();
         const visibleRange = Math.floor(count / 2);
         const maxZIndex = getMaxZIndex(count);
 
         for (let offset = -visibleRange; offset <= visibleRange; offset++) {
             const index = (this.center_index + offset + count) % count;
             const item = items[index];
+
+            if (!item)
+                continue;
+            console.log(index);
 
             const index_from_center = offset;
             const item_scale = getScale(index_from_center);
@@ -245,6 +206,7 @@ class Carousel {
             item.style.transform = `translate(${translateX}px, -50%) scale(${item_scale})`;
         }
     }
+
 
     /**
      * @param {1|-1} direction

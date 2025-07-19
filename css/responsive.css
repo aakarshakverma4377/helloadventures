@@ -24,7 +24,15 @@
         max-width: 90vw;
         max-height: 70vh;
         aspect-ratio: 9/16;
+        box-shadow: none !important;
+        border: 1px solid #ffffff;
     }
+    /*.carousel-item.transitioned-transform {*/
+    /*    transition: box-shadow 250ms ease-in-out,*/
+    /*    transform 100ms cubic-bezier(.66,.63,.45,1.2),*/
+    /*    filter 250ms ease-in-out,*/
+    /*    z-index 100ms ease-in-out;*/
+    /*}*/
 
     .carousel-item-container {
         position: absolute;

@@ -242,7 +242,7 @@
     /*height: 100%;*/
     min-height: 500px;
     max-height: 1500px;
-    width: 100vw;
+    width: 100%;
     background-image: linear-gradient(to bottom,var(--surface-bg-color) 10%, var(--surface-bg-color-shade) 20% 90%, var(--surface-bg-color) 100%);
 }
 
