@@ -304,31 +304,31 @@ class Carousel {
 new Carousel("international-packages", {
     "Dubai": {
         img_landscape: "./assets/international/dubai.jpg",
-        img_portrait: "./assets/phone/international/dubaiphone.jpeg",
+        img_portrait: "./assets/phone/international/dubaiphone.jpg",
         link: "./pages/international/dubai.html",
         price: "1000"
     },
     "SriLanka": {
         img_landscape: "./assets/international/srilanka.jpg",
-        img_portrait: "./assets/phone/international/srilankaphone.jpeg",
+        img_portrait: "./assets/phone/international/srilankaphone.jpg",
         link: "./pages/international/sri-lanka.html",
         price: "1000"
     },
     "Singapore": {
         img_landscape: "./assets/international/singapore.jpg",
-        img_portrait: "./assets/phone/international/singaporephone.jpeg",
+        img_portrait: "./assets/phone/international/singaporephone.jpg",
         link: "./pages/international/singapore.html",
         price: "1000"
     },
     "Thailand": {
         img_landscape: "./assets/international/thailand.jpg",
-        img_portrait: "./assets/phone/international/thailandphone.jpeg",
+        img_portrait: "./assets/phone/international/thailandphone.jpg",
         link: "./pages/international/thailand.html",
         price: "1000"
     },
     "Nepal": {
         img_landscape: "./assets/international/nepal.jpg",
-        img_portrait: "./assets/phone/international/nepalphone.jpeg",
+        img_portrait: "./assets/phone/international/nepalphone.jpg",
         link: "./pages/international/nepal.html",
         price: "1000"
     }
@@ -342,13 +342,13 @@ new Carousel("domestic-packages", {
     },
     "Himachal Pradesh": {
         img_landscape: "./assets/domestic/shimla.jpg",
-        img_portrait: "./assets/phone/domestic/hpphone.jpeg",
+        img_portrait: "./assets/phone/domestic/hpphone.jpg",
         link: "./pages/domestic/himachalpradesh.html",
         price: "1000"
     },
     "Uttrakhand": {
         img_landscape: "./assets/domestic/uttrakhand.jpg",
-        img_portrait: "./assets/phone/domestic/uttrakhandphone.jpeg",
+        img_portrait: "./assets/phone/domestic/uttrakhandphone.jpg",
         link: "./pages/domestic/uttrakhand.html",
         price: "1000"
     },
@@ -360,74 +360,74 @@ new Carousel("domestic-packages", {
     },
     "Andaman": {
         img_landscape: "./assets/domestic/andaman.jpg",
-        img_portrait: "./assets/phone/domestic/andamanphone.jpeg",
+        img_portrait: "./assets/phone/domestic/andamanphone.jpg",
         link: "./pages/domestic/andaman.html",
         price: "1000"
     },
     "Goa": {
-        img_landscape: "./assets/domestic/goa.jpeg",
+        img_landscape: "./assets/domestic/goa.jpg",
         img_portrait: "./assets/phone/domestic/goaphone.jpg",
         link: "./pages/domestic/goa.html",
         price: "1000"
     },
     "Kashmir": {
         img_landscape: "./assets/domestic/kashmir.webp",
-        img_portrait: "./assets/phone/domestic/kashmirphone.jpeg",
+        img_portrait: "./assets/phone/domestic/kashmirphone.jpg",
         link: "./pages/domestic/kashmir.html",
         price: "1000"
     },
     "Rajasthan": {
-        img_landscape: "./assets/domestic/rajasthan.jpeg",
+        img_landscape: "./assets/domestic/rajasthan.jpg",
         img_portrait: "./assets/phone/domestic/rajasthanphone.jpg",
         link: "./pages/domestic/rajasthan.html",
         price: "1000"
     },
     "Sikkim": {
-        img_landscape: "./assets/domestic/sikkim.jpeg",
-        img_portrait: "./assets/phone/domestic/sikkimphone.jpeg",
+        img_landscape: "./assets/domestic/sikkim.jpg",
+        img_portrait: "./assets/phone/domestic/sikkimphone.jpg",
         link: "./pages/domestic/sikkim.html",
         price: "1000"
     },
     "Golden Triangle": {
-        img_landscape: "./assets/domestic/goldentemple.jpeg",
-        img_portrait: "./assets/phone/domestic/goldentrianglephone.jpeg",
+        img_landscape: "./assets/domestic/goldentemple.jpg",
+        img_portrait: "./assets/phone/domestic/goldentrianglephone.jpg",
         link: "./pages/domestic/goldentemple.html",
         price: "1000"
     }
 });
 new Carousel("pilgrimage-packages", {
     "Rameshwaram Madurai Kanyakumari": {
-        img_landscape: "./assets/pilgrimage/kanyakumari.jpeg",
+        img_landscape: "./assets/pilgrimage/kanyakumari.jpg",
         img_portrait: "./assets/phone/pilgrimages/rameshwaramphone.jpg",
         link: "./pages/pilgrimage/rameshwaram-kanyakumari.html",
         price: "1000"
     },
     "Varanasi Ayodhaya Prayagraj": {
-        img_landscape: "./assets/pilgrimage/ayodhya.jpeg",
+        img_landscape: "./assets/pilgrimage/ayodhya.jpg",
         img_portrait: "./assets/phone/pilgrimages/ramphone.jpg",
         link: "./pages/pilgrimage/varanasi-ayodhaya.html",
         price: "1000"
     },
     "Himachal Shaktipeeths": {
-        img_landscape: "./assets/pilgrimage/shaktipeeths.jpeg",
+        img_landscape: "./assets/pilgrimage/shaktipeeths.jpg",
         img_portrait: "./assets/phone/pilgrimages/shaktipeethsphone.jpg",
         link: "./pages/pilgrimage/himachal-shaktipeeths.html",
         price: "1000"
     },
     "Char Dham\nDo Dham": {
-        img_landscape: "./assets/pilgrimage/chardham.jpeg",
+        img_landscape: "./assets/pilgrimage/chardham.jpg",
         img_portrait: "./assets/phone/pilgrimages/chardhamphone.jpg",
         link: "./pages/pilgrimage/chardham-dodham.html",
         price: "1000"
     },
     "Vaishano Devi": {
-        img_landscape: "./assets/pilgrimage/vaishanodevi.jpeg",
+        img_landscape: "./assets/pilgrimage/vaishanodevi.jpg",
         img_portrait: "./assets/phone/pilgrimages/vaishnodeviphone.webp",
         link: "./pages/pilgrimage/vaishanodevi.html",
         price: "1000"
     },
     "Golden Temple": {
-        img_landscape: "./assets/domestic/goldentemple.jpeg",
+        img_landscape: "./assets/domestic/goldentemple.jpg",
         img_portrait: "./assets/phone/pilgrimages/goldentemplephone.jpg",
         link: "./pages/pilgrimage/goldentemple.html",
         price: "1000"
