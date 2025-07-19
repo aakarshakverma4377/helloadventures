@@ -41,6 +41,29 @@ function isPortrait() {
     return window.innerHeight > window.innerWidth;
 }
 
+let interaction_observer = null;
+
+if ("IntersectionObserver" in window) {
+    interaction_observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+            const item = entry.target;
+
+            if (entry.isIntersecting && item.dataset.loaded === "false") {
+                const url = item.getAttribute(isPortrait() ? "portrait" : "landscape");
+                item.setAttribute("data-loaded","true");
+                item.style.backgroundImage = `url(${url})`;
+            } else {
+                item.setAttribute("data-loaded","false");
+                // UNLOAD when out of view
+                item.style.backgroundImage = "";
+            }
+        }
+    }, {
+        root: null,        // Viewport
+        threshold: 0.05    // Trigger when at least 5% visible
+    });
+}
+
 class Carousel {
     animation_time_ms = 250;
 
@@ -65,6 +88,7 @@ class Carousel {
             const heading_el = document.createElement("h1");
             bg_el.id = this.getItemId(i);
             bg_el.classList.add("carousel-item");
+            bg_el.setAttribute("data-loaded","false");
             bg_el.href = entry.link;
             bg_el.target = "_blank";
             bg_el.rel = "noopener noreferrer";
@@ -75,6 +99,8 @@ class Carousel {
             bg_el.append(heading_el);
             item_container.appendChild(bg_el);
             this.carousel_items.push(bg_el);
+
+            interaction_observer?.observe(bg_el);
         }
         const btnLeft = document.createElement("button");
         const btnRight = document.createElement("button");
@@ -107,7 +133,6 @@ class Carousel {
                 item.style.transform = "";
             }
             this.update();
-            this.updateImages();
         });
 
         this.startX = 0;
@@ -126,12 +151,12 @@ class Carousel {
 
         this.carousel_item_container.addEventListener("touchmove", (e) => {
             if (!this.isDragging) return;
-            if(this.isSwiped){
+            if (this.isSwiped) {
                 e.preventDefault();
                 return;
             }
-            if(this.isVerticalSwipe){
-                return;;
+            if (this.isVerticalSwipe) {
+                return;
             }
             this.deltaX = e.touches[0].clientX - this.startX;
             this.deltaY = e.touches[0].clientY - this.startY;
@@ -139,10 +164,10 @@ class Carousel {
             const drag_dist_x = Math.abs(this.deltaX);
             const drag_dist_y = Math.abs(this.deltaY);
 
-            if(drag_dist_x < 5 && drag_dist_y < 5 )
+            if (drag_dist_x < 5 && drag_dist_y < 5)
                 return;
 
-            if (drag_dist_x  > 5 || drag_dist_y > 5 ){
+            if (drag_dist_x > 5 || drag_dist_y > 5) {
                 this.isVerticalSwipe = drag_dist_y > drag_dist_x;
             }
 
@@ -166,19 +191,14 @@ class Carousel {
 
         });
         this.update();
-        this.updateImages();
-
     }
 
     getSpacingRatio() {
-        return (isPortrait() ? 0.2 : 0.5);
+        return (isPortrait() ? 0.3 : 0.5);
     }
 
-    updateImages() {
-        for (const carouselItem of this.carousel_items) {
-            let img_url = carouselItem.getAttribute(isPortrait() ? "portrait" : "landscape");
-            carouselItem.style.backgroundImage = `url(${img_url})`;
-        }
+    getImageUrl(carousel_item) {
+        return carousel_item.getAttribute(isPortrait() ? "portrait" : "landscape");
     }
 
 
@@ -217,7 +237,7 @@ class Carousel {
             const item_scale = getScale(index_from_center);
             const opacity = getOpacity(index_from_center);
             const translateX = centerPixel + index_from_center * spacing - itemWidth / 2;
-
+            item.style.willChange = "transform, z-index, filter";
             item.style.zIndex = (maxZIndex - Math.abs(index_from_center)).toString();
             item.style.filter = `brightness(${opacity})`;
             item.style.transform = `translate(${translateX}px, -50%) scale(${item_scale})`;
@@ -232,6 +252,7 @@ class Carousel {
 
         this.animation_queue.push(direction);
         if (!this.is_animating) {
+
             this.processQueue();
         }
 
@@ -240,12 +261,14 @@ class Carousel {
 
         this.queue_timer_id = setTimeout(() => {
             this.animation_queue = [];
+            for (const item of this.carousel_items) {
+                item.style.willChange = "";
+            }
         }, this.animation_time_ms);
     }
 
     async processQueue() {
         this.is_animating = true;
-
         while (this.animation_queue.length > 0) {
             const direction = this.animation_queue.shift();
 
