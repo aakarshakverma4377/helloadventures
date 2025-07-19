@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #f0f0f0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.grid-item {
+    background-color: #4CAF50;
+    aspect-ratio: 4 / 5 ; /* Keeps the box square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+}
