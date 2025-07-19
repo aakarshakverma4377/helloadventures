@@ -248,13 +248,19 @@
     padding: 0;
     overflow: hidden;
     position: relative;
-    /*height: 100%;*/
-    min-height: 500px;
+    height: 60vh;
+    min-height: 300px;
     max-height: 1500px;
     width: 100%;
-    background-image: linear-gradient(to bottom,var(--surface-bg-color) 30%, var(--surface-bg-color-shade) 40% 60%, var(--surface-bg-color) 100%);
 }
-
+.package-bg {
+    width: 100%;
+    height: 50%;
+    /*aspect-ratio: 16/9;*/
+    /*height: 50%;*/
+    position: relative;
+    overflow: hidden;
+}
 .package-bg h1 {
     padding: 0.5em;
     font-size: 2em;
@@ -274,13 +280,9 @@
     height: 100%;
     width: 100%;
     z-index: 0;
-    background-image: linear-gradient(to bottom,var(--surface-bg-color) 0%, transparent 40% 80%, var(--surface-bg-color-shade) 100%);
+    background-image: linear-gradient(to bottom,var(--surface-bg-color) 0%, transparent 30% 80%, var(--surface-bg-color) 100%);
 }
-.package-bg {
-    height: 50%;
-    position: relative;
-    overflow: hidden;
-}
+
 
 .package-bg video {
     position: absolute;

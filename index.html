@@ -39,8 +39,7 @@
         </svg>
 
     </button>
-    <video id="background-video" loop autoplay="autoplay" muted
-           disablepictureinpicture>
+    <video id="background-video" loop autoplay="autoplay" muted playsinline disablepictureinpicture>
         <source src="./assets/video/hero-av1.webm" type="video/webm">
         <source src="./assets/video/hero-v9.webm" type="video/webm">
         <source src="./assets/video/hero-h264.mp4" type="video/mp4">
@@ -75,21 +74,35 @@
     <section class="package-container" id="domestic-packages">
         <div class="package-bg">
             <h1>Domestic Packages</h1>
-            <video src="assets/video/video2.mp4" autoplay muted loop></video>
+            <video autoplay muted loop playsinline>
+                <source src="./assets/video/domestic-av1.webm" type="video/webm">
+                <source src="./assets/video/domestic-vp9.webm" type="video/webm">
+                <source src="./assets/video/domestic-h264.mp4" type="video/mp4">
+                Your browser does not support does not support video playback.
+
+            </video>
             <div class="package-video-overlay"></div>
         </div>
     </section>
     <section class="package-container" id="international-packages">
         <div class="package-bg">
             <h1>International Packages</h1>
-            <video src="assets/video/video1.mp4" autoplay muted loop></video>
+            <video src="assets/video/video1.mp4" autoplay muted loop playsinline>
+                Your browser does not support does not support video playback.
+            </video>
             <div class="package-video-overlay"></div>
         </div>
     </section>
     <section class="package-container" id="pilgrimage-packages">
         <div class="package-bg">
             <h1>Pilgrim Packages</h1>
-            <video src="assets/video/video3.mp4" autoplay muted loop></video>
+            <video autoplay muted loop playsinline>
+                <source src="./assets/video/pilgrimage-vp9.webm" type="video/webm">
+                <source src="./assets/video/pilgrimage-av1.webm" type="video/webm">
+                <source src="./assets/video/pilgrimage-h264.mp4" type="video/mp4">
+                Your browser does not support does not support video playback.
+
+            </video>
             <div class="package-video-overlay"></div>
         </div>
     </section>

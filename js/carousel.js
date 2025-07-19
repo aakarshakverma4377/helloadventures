@@ -110,34 +110,57 @@ class Carousel {
             this.updateImages();
         });
 
-        console.log(this.carousel_item_container);
         this.startX = 0;
+        this.startY = 0;
         this.deltaX = 0;
         this.isDragging = false;
-
+        this.isSwiped = false;
+        this.isVerticalSwipe = false;
         this.carousel_item_container.addEventListener("touchstart", (e) => {
             this.isDragging = true;
             this.startX = e.touches[0].clientX;
+            this.startY = e.touches[0].clientY;
             this.deltaX = 0;
+            this.deltaY = 0;
         });
 
         this.carousel_item_container.addEventListener("touchmove", (e) => {
             if (!this.isDragging) return;
-
+            if(this.isSwiped){
+                e.preventDefault();
+                return;
+            }
+            if(this.isVerticalSwipe){
+                return;;
+            }
             this.deltaX = e.touches[0].clientX - this.startX;
-            const drag_dist = Math.abs(this.deltaX);
-            if (drag_dist > 5) {
-                this.isDragging = false;
+            this.deltaY = e.touches[0].clientY - this.startY;
+
+            const drag_dist_x = Math.abs(this.deltaX);
+            const drag_dist_y = Math.abs(this.deltaY);
+
+            if(drag_dist_x < 5 && drag_dist_y < 5 )
+                return;
+
+            if (drag_dist_x  > 5 || drag_dist_y > 5 ){
+                this.isVerticalSwipe = drag_dist_y > drag_dist_x;
+            }
+
+            if (drag_dist_x > 5 && !this.isSwiped && !this.isVerticalSwipe) {
+                this.isSwiped = true;
                 this.startX = e.touches[0].clientX;
                 this.enqueueMove(-Math.sign(this.deltaX));
                 this.deltaX = 0;
                 e.preventDefault();
             }
+
         }, {passive: false, capture: true});
 
         window.addEventListener("touchend", () => {
             if (this.isDragging) {
                 this.isDragging = false;
+                this.isSwiped = false;
+                this.isVerticalSwipe = false;
                 // this.snapToClosestItem(this.deltaX);
             }
 
@@ -189,7 +212,6 @@ class Carousel {
 
             if (!item)
                 continue;
-            console.log(index);
 
             const index_from_center = offset;
             const item_scale = getScale(index_from_center);
