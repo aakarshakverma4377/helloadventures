@@ -6,7 +6,6 @@
 .carousel {
     position: absolute;
     overflow: visible;
-    display: flex;
     height: fit-content;
     width: 100%;
     top: 50%;
@@ -15,9 +14,10 @@
 
 .carousel-item-container {
     /*position: absolute;*/
-    width: inherit;
+    width: 100%;
     height: min(60vw, 30vh);
     min-height: 200px;
+    max-height: 1000px;
 }
 
 .carousel-item {
@@ -36,6 +36,7 @@
     /*height: 50vh;*/
     max-width: 90vw;
     min-width: 100px;
+
     height: min(60vw, 30vh);
     min-height: 200px;
     max-height: 1000px;
@@ -52,23 +53,17 @@
     background-color: var(--carousel-bg);
     color: var(--text-on-carousel-color);
 
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.37);
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.37);
     border-radius: var(--border-radius);
 
-    will-change: transform, filter, z-index;
+    will-change: box-shadow, transform, filter, z-index;
     /*transform: translateY(-50%) translateX(-50%);*/
     transition: box-shadow 250ms ease-in-out,
-    filter 250ms ease-in-out;
-
-    overflow: hidden;
-
-}
-
-.carousel-item.transitioned-transform {
-    transition: box-shadow 250ms ease-in-out,
-    transform 250ms cubic-bezier(.66,.63,.45,1.2),
+    transform 250ms cubic-bezier(.66, .63, .45, 1.2),
     filter 250ms ease-in-out,
     z-index 100ms ease-in-out;
+    overflow: hidden;
+
 }
 
 .carousel-item.selected {
@@ -76,24 +71,23 @@
     pointer-events: all;
     /*transform: scale(1) translateY(-50%) !important;*/
     filter: brightness(1) !important;
-    box-shadow: 0 0 100px 10px #000;
+    box-shadow: 0 0 40px 4px #000;
 }
 
-
-.carousel-item p {
-    font-size: 1.3em;
-    padding: 0 0.5em 1.2em 1em;
-    color: var(--text-color-secondary);
-}
-
-.carousel-item h2 {
+.carousel-item h1 {
     font-family: "Sansation", sans-serif;
     margin-top: 10%;
+    font-weight: 700;
     padding-left: 1em;
     padding-right: 1em;
     align-self: center;
-    font-size: 40px;
-    text-shadow: 0 0 1px #000,0 0 1px #000,0 0 1px #000,0 0 1px #000,0 0 1px #000;
+    font-size: max(30px,min(5vw, 5vh));
+
+    /* Crisp stroke for WebKit */
+    -webkit-text-stroke: min(0.09em, 1px) black;
+    text-stroke: 2px black;
+
+
     color: var(--text-color-primary);
 }
 

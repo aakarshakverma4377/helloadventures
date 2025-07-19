@@ -4,21 +4,26 @@
     }
 }
 @media (orientation: portrait){
+    .package-container{
+        max-height: calc(85vh + 2em);
+    }
     .package-container video, .package-video-overlay{
         display: none;
     }
     .package-bg {
         height: 100%;
+
     }
     .package-bg video{
         filter: brightness(0.5);
     }
-    .package-container h2{
+    .carousel-item  h1{
         margin-top: 30%;
-        font-size:20px;
+        /*-webkit-text-stroke: 0.3px black;*/
+        font-size:max(10px,min(3.2vh,7vw));
     }
     .carousel-item {
-        height: 50vh;
+        height: 60vh;
         /*max-height: unset;*/
         min-width: 100px;
         max-width: 90vw;
@@ -35,11 +40,12 @@
     /*}*/
 
     .carousel-item-container {
-        position: absolute;
-        top: 0;
         width: inherit;
-        height: calc(80vw * 5 / 4);
-        transform: translateY(-50%);
+        height: calc(60vh);
+        min-width: 100px;
+        max-width: 90vw;
+        max-height: 70vh;
+        /*transform: translateY(-50%);*/
     }
 
     .package-container video{

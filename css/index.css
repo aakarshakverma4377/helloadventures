@@ -183,7 +183,7 @@
     display: flex;
     width: 100vw;
     height: 100vh;
-    background-color: var(--overlay-color);
+    background-color: var(--surface-bg-color);
     overflow: hidden;
 }
 .hero img{
@@ -227,7 +227,16 @@
     width: 50ch;
     max-width: 100%;
 }
+/*-------------------------------------------------------------------------------------------------------
+/*------------------------------------------- Main -----------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------
+*/
 
+.main{
+    width: 100%;
+    padding: 3em 0 0 0;
+    background-color: var(--surface-bg-color);
+}
 
 /*-------------------------------------------------------------------------------------------------------
 /*------------------------------------------- Packages -----------------------------------------------------
@@ -243,10 +252,11 @@
     min-height: 500px;
     max-height: 1500px;
     width: 100%;
-    background-image: linear-gradient(to bottom,var(--surface-bg-color) 10%, var(--surface-bg-color-shade) 20% 90%, var(--surface-bg-color) 100%);
+    background-image: linear-gradient(to bottom,var(--surface-bg-color) 30%, var(--surface-bg-color-shade) 20% 90%, var(--surface-bg-color) 100%);
 }
 
 .package-bg h1 {
+    padding: 0.5em;
     font-size: 2em;
     z-index: 1;
     top: 0;
@@ -264,7 +274,7 @@
     height: 100%;
     width: 100%;
     z-index: 0;
-    background-image: linear-gradient(to bottom,var(--surface-bg-color) 5%, transparent 40% 80%, var(--surface-bg-color-shade) 100%);
+    background-image: linear-gradient(to bottom,var(--surface-bg-color) 0%, transparent 40% 80%, var(--surface-bg-color-shade) 100%);
 }
 .package-bg {
     height: 50%;
