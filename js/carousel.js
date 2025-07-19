@@ -126,9 +126,7 @@ class Carousel {
 
             this.deltaX = e.touches[0].clientX - this.startX;
             const drag_dist = Math.abs(this.deltaX);
-            if (drag_dist > 0.1) {
-                if (drag_dist < 10)
-                    return;
+            if (drag_dist > 5) {
                 this.isDragging = false;
                 this.startX = e.touches[0].clientX;
                 this.enqueueMove(-Math.sign(this.deltaX));
