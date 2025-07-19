@@ -48,20 +48,26 @@ if ("IntersectionObserver" in window) {
         for (const entry of entries) {
             const item = entry.target;
 
-            if (entry.isIntersecting && item.dataset.loaded === "false") {
-                const url = item.getAttribute(isPortrait() ? "portrait" : "landscape");
-                item.setAttribute("data-loaded","true");
-                item.style.backgroundImage = `url(${url})`;
-            } else {
-                item.setAttribute("data-loaded","false");
-                // UNLOAD when out of view
-                item.style.backgroundImage = "";
-            }
+            setBg(entry.isIntersecting && item.dataset.loaded === "false");
         }
     }, {
         root: null,        // Viewport
-        threshold: 0.05    // Trigger when at least 5% visible
+        threshold: 0    // Trigger when at least 5% visible
     });
+}
+
+function setBg(item, visible) {
+    if (visible) {
+        const url = item.getAttribute(isPortrait() ? "portrait" : "landscape");
+        item.setAttribute("data-loaded", "true");
+        item.style.backgroundImage = `url(${url})`;
+        console.log("resize-show", url);
+    } else {
+        item.setAttribute("data-loaded", "false");
+        // UNLOAD when out of view
+        console.log("hiding", item.getAttribute("portrait"));
+        item.style.backgroundImage = "";
+    }
 }
 
 class Carousel {
@@ -88,13 +94,14 @@ class Carousel {
             const heading_el = document.createElement("h1");
             bg_el.id = this.getItemId(i);
             bg_el.classList.add("carousel-item");
-            bg_el.setAttribute("data-loaded","false");
+            bg_el.setAttribute("data-loaded", "false");
             bg_el.href = entry.link;
             bg_el.target = "_blank";
             bg_el.rel = "noopener noreferrer";
             bg_el.setAttribute("landscape", entry.img_landscape);
             bg_el.setAttribute("portrait", entry.img_portrait);
             heading_el.innerText = isPortrait() ? key.toUpperCase() : toTitleCase(key);
+
 
             bg_el.append(heading_el);
             item_container.appendChild(bg_el);
@@ -124,6 +131,20 @@ class Carousel {
 
         this.carousel_item_container = item_container;
 
+        document.addEventListener("load", () => {
+            for (const item of this.carousel_items) {
+                const rect = item.getBoundingClientRect();
+                const inViewport = (
+                    rect.top < window.innerHeight &&
+                    rect.bottom > 0 &&
+                    rect.left < window.innerWidth &&
+                    rect.right > 0
+                );
+
+                setBg(item, inViewport);
+            }
+            this.update();
+        });
         window.addEventListener("resize", (e) => {
             for (const item of this.carousel_items) {
                 item.style.visibility = "";
@@ -131,6 +152,20 @@ class Carousel {
                 item.style.zIndex = "";
                 item.style.filter = "";
                 item.style.transform = "";
+                item.style.backgroundImage = "";
+
+                const rect = item.getBoundingClientRect();
+                const inViewport = (
+                    rect.top < window.innerHeight &&
+                    rect.bottom > 0 &&
+                    rect.left < window.innerWidth &&
+                    rect.right > 0
+                );
+
+
+                setBg(item, inViewport);
+
+
             }
             this.update();
         });
@@ -240,7 +275,7 @@ class Carousel {
 
             if (item.dataset.loaded === "false") {
                 const url = item.getAttribute(isPortrait() ? "portrait" : "landscape");
-                item.setAttribute("data-loaded","true");
+                item.setAttribute("data-loaded", "true");
                 item.style.backgroundImage = `url(${url})`;
             }
             item.style.willChange = "transform, z-index, filter";
