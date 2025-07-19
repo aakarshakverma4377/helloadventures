@@ -397,43 +397,43 @@ new Carousel("domestic-packages", {
 new Carousel("pilgrimage-packages", {
     "Rameshwaram Madurai Kanyakumari": {
         img_landscape: "./assets/pilgrimage/kanyakumari.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/pilgrimages/rameshwaramphone.jpg",
         link: "./pages/pilgrimage/rameshwaram-kanyakumari.html",
         price: "1000"
     },
     "Varanasi Ayodhaya Prayagraj": {
         img_landscape: "./assets/pilgrimage/ayodhya.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/pilgrimages/ramphone.jpg",
         link: "./pages/pilgrimage/varanasi-ayodhaya.html",
         price: "1000"
     },
     "Himachal Shaktipeeths": {
         img_landscape: "./assets/pilgrimage/shaktipeeths.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/pilgrimages/shaktipeethsphone.jpg",
         link: "./pages/pilgrimage/himachal-shaktipeeths.html",
         price: "1000"
     },
     "Char Dham/Do Dham": {
         img_landscape: "./assets/pilgrimage/chardham.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/pilgrimages/chardhamphone.jpg",
         link: "./pages/pilgrimage/chardham-dodham.html",
         price: "1000"
     },
     "Vaishano Devi": {
         img_landscape: "./assets/pilgrimage/vaishanodevi.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/pilgrimages/vaishnodeviphone.webp",
         link: "./pages/pilgrimage/vaishanodevi.html",
         price: "1000"
     },
     "Golden Temple": {
         img_landscape: "./assets/domestic/goldentemple.jpeg",
-        img_portrait: "",
+        img_portrait: "./assets/phone/pilgrimages/goldentemplephone.jpg",
         link: "./pages/pilgrimage/goldentemple.html",
         price: "1000"
     },
     "Pashupatinath": {
         img_landscape: "./assets/pilgrimage/pashupatinath.avif",
-        img_portrait: "",
+        img_portrait: "./assets/phone/pilgrimages/pashupatinathphone.webp",
         link: "./pages/pilgrimage/pashupatinath.html",
         price: "1000"
     }
