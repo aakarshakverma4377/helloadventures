@@ -237,6 +237,12 @@ class Carousel {
             const item_scale = getScale(index_from_center);
             const opacity = getOpacity(index_from_center);
             const translateX = centerPixel + index_from_center * spacing - itemWidth / 2;
+
+            if (item.dataset.loaded === "false") {
+                const url = item.getAttribute(isPortrait() ? "portrait" : "landscape");
+                item.setAttribute("data-loaded","true");
+                item.style.backgroundImage = `url(${url})`;
+            }
             item.style.willChange = "transform, z-index, filter";
             item.style.zIndex = (maxZIndex - Math.abs(index_from_center)).toString();
             item.style.filter = `brightness(${opacity})`;
