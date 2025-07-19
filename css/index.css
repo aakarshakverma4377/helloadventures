@@ -252,7 +252,7 @@
     min-height: 500px;
     max-height: 1500px;
     width: 100%;
-    background-image: linear-gradient(to bottom,var(--surface-bg-color) 30%, var(--surface-bg-color-shade) 20% 90%, var(--surface-bg-color) 100%);
+    background-image: linear-gradient(to bottom,var(--surface-bg-color) 30%, var(--surface-bg-color-shade) 40% 60%, var(--surface-bg-color) 100%);
 }
 
 .package-bg h1 {
