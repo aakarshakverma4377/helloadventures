@@ -62,7 +62,7 @@ class Carousel {
         for (let i = 0; i < entries.length; i++) {
             const [key, entry] = entries[i];
             const bg_el = document.createElement("a");
-            const heading_el = document.createElement("svg");
+            const heading_el = document.createElement("h1");
             bg_el.id = this.getItemId(i);
             bg_el.classList.add("carousel-item");
             bg_el.href = entry.link;
@@ -70,7 +70,7 @@ class Carousel {
             bg_el.rel = "noopener noreferrer";
             bg_el.setAttribute("landscape", entry.img_landscape);
             bg_el.setAttribute("portrait", entry.img_portrait);
-            heading_el.innerHTML = "<text font-family=''>" + (isPortrait() ? key.toUpperCase() : toTitleCase(key)) + "<text/>";
+            heading_el.innerText = isPortrait() ? key.toUpperCase() : toTitleCase(key);
 
             bg_el.append(heading_el);
             item_container.appendChild(bg_el);
@@ -127,7 +127,7 @@ class Carousel {
             this.deltaX = e.touches[0].clientX - this.startX;
             const drag_dist = Math.abs(this.deltaX);
             if (drag_dist > 0.1) {
-                if(drag_dist < this.carousel_items[0].offsetWidth/2)
+                if (drag_dist < 10)
                     return;
                 this.startX = e.touches[0].clientX;
                 this.enqueueMove(-Math.sign(this.deltaX));
@@ -158,9 +158,6 @@ class Carousel {
             carouselItem.style.backgroundImage = `url(${img_url})`;
         }
     }
-
-
-
 
 
     update() {
@@ -200,7 +197,6 @@ class Carousel {
             const opacity = getOpacity(index_from_center);
             const translateX = centerPixel + index_from_center * spacing - itemWidth / 2;
 
-            item.classList.add("transitioned-transform");
             item.style.zIndex = (maxZIndex - Math.abs(index_from_center)).toString();
             item.style.filter = `brightness(${opacity})`;
             item.style.transform = `translate(${translateX}px, -50%) scale(${item_scale})`;
@@ -241,7 +237,6 @@ class Carousel {
             this.update();
             await new Promise(resolve => setTimeout(resolve, this.animation_time_ms));
 
-            // Wait for transition to finish (match CSS duration)
         }
 
         this.is_animating = false;
@@ -375,7 +370,7 @@ new Carousel("pilgrimage-packages", {
         link: "./pages/pilgrimage/himachal-shaktipeeths.html",
         price: "1000"
     },
-    "Char Dham/Do Dham": {
+    "Char Dham\nDo Dham": {
         img_landscape: "./assets/pilgrimage/chardham.jpeg",
         img_portrait: "./assets/phone/pilgrimages/chardhamphone.jpg",
         link: "./pages/pilgrimage/chardham-dodham.html",
