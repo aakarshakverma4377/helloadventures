@@ -215,14 +215,14 @@
     width: min-content;
     max-width: 100%;
     text-align: left;
-    font-size:min(max(3em,10vw),10vh);
+    font-size:min(max(3em,10vw),13vh);
     padding: 0;
 }
 
 #about {
     /*text-shadow: 1px 0 2px #000,0 0 2px #000,0 0 2px #000,0 0 2px #000;*/
     padding-top: 1em;
-    font-size:min(max(0.9em,2vw),2vh);
+    font-size:min(max(0.9em,2vw),2.5vh);
     text-align: left;
     width: 50ch;
     max-width: 100%;
