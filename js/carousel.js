@@ -51,8 +51,8 @@ if ("IntersectionObserver" in window) {
             setBg(entry.isIntersecting && item.dataset.loaded === "false");
         }
     }, {
-        root: null,        // Viewport
-        threshold: 0    // Trigger when at least 5% visible
+        root: null, // Viewport
+        threshold: 0, // Trigger as soon as a pixel is visible
     });
 }
 
@@ -61,6 +61,7 @@ function setBg(item, visible) {
         const url = item.getAttribute(isPortrait() ? "portrait" : "landscape");
         item.setAttribute("data-loaded", "true");
         item.style.backgroundImage = `url(${url})`;
+
         console.log("resize-show", url);
     } else {
         item.setAttribute("data-loaded", "false");
