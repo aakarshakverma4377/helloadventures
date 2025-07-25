@@ -89,14 +89,11 @@ class Carousel {
         this.center_index = entries.length % 2 === 0 ? entries.length / 2 : (entries.length - 1) / 2;
         for (let i = 0; i < entries.length; i++) {
             const [key, entry] = entries[i];
-            const bg_el = document.createElement("a");
+            const bg_el = document.createElement("div");
             const heading_el = document.createElement("h2");
             bg_el.id = this.getItemId(i);
             bg_el.classList.add("carousel-item");
             bg_el.setAttribute("data-loaded", "false");
-            bg_el.href = entry.link;
-            bg_el.target = "_blank";
-            bg_el.rel = "noopener noreferrer";
             bg_el.setAttribute("key", key);
             heading_el.innerText = key.toUpperCase();
 
