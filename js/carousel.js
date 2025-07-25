@@ -356,7 +356,9 @@ new Carousel("domestic-packages", {
     "spiti valley": {
         thumbnail: "./assets/domestic/spiti.jpg",
         background_url: [
+            // phone
             "./assets/phone/international/dubai.jpg",
+            // Desktop
             "./assets/phone/international/dubai.jpg"
         ],
 
