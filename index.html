@@ -12,7 +12,8 @@
           rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="./css/defaults.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="./css/theme.css">
@@ -46,9 +47,9 @@
         Your browser does not support does not support video playback.
     </video>
     <div class="video-overlay"></div>
-    <img alt="logo" src="./assets/halogo.svg">
     <div id="intro">
-        <h1 id="logo">Hello Adventures</h1>
+        <img alt="logo" src="./assets/halogo.svg">
+        <h1>Hello Adventures</h1>
         <p id="about">
             We are a Shimla-based travel company promoting sustainable tourism through eco-friendly experiences and
             responsible travel practices.
@@ -56,54 +57,59 @@
     </div>
 
     <nav class="navbar hidden" id="navbar">
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="pages/navigation/about.html">About</a></li>
-            <li><a href="#">Tour Packages</a></li>
-            <li><a href="pages/navigation/services.html">Service</a></li>
-            <li><a href="pages/navigation/contact.html">Contact</a></li>
-        </ul>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="pages/navigation/about.html">About</a>
+            <a href="#">Tour Packages</a>
+            <a href="pages/navigation/services.html">Service</a>
+            <a href="pages/navigation/contact.html">Contact</a>
+        </div>
         <div id="socials"></div>
     </nav>
 </header>
 
 
-
-
 <main class="main">
     <section class="package-container" id="domestic-packages">
-        <div class="package-bg">
-            <h1>Domestic Packages</h1>
-            <video autoplay muted loop playsinline>
-                <source src="./assets/video/domestic-av1.webm" type="video/webm">
-                <source src="./assets/video/domestic-vp9.webm" type="video/webm">
-                <source src="./assets/video/domestic-h264.mp4" type="video/mp4">
-                Your browser does not support does not support video playback.
+        <div class="package-info">
+            <div class="package-about">
+                <h1 class="location-name"></h1>
+                <p class="about"></p>
+            </div>
+            <div class="package-tiles">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
 
-            </video>
-            <div class="package-video-overlay"></div>
         </div>
     </section>
     <section class="package-container" id="international-packages">
-        <div class="package-bg">
-            <h1>International Packages</h1>
-            <video src="assets/video/video1.mp4" autoplay muted loop playsinline>
-                Your browser does not support does not support video playback.
-            </video>
-            <div class="package-video-overlay"></div>
+        <div class="package-info">
+            <div class="package-about">
+                <h1 class="location-name"></h1>
+                <p class="about"></p>
+            </div>
+            <div class="package-tiles">
+
+            </div>
+
         </div>
+
     </section>
     <section class="package-container" id="pilgrimage-packages">
-        <div class="package-bg">
-            <h1>Pilgrim Packages</h1>
-            <video autoplay muted loop playsinline>
-                <source src="./assets/video/pilgrimage-vp9.webm" type="video/webm">
-                <source src="./assets/video/pilgrimage-av1.webm" type="video/webm">
-                <source src="./assets/video/pilgrimage-h264.mp4" type="video/mp4">
-                Your browser does not support does not support video playback.
+        <div class="package-info">
+            <div class="package-about">
+                <h1 class="location-name"></h1>
+                <p class="about"></p>
+            </div>
+            <div class="package-tiles">
 
-            </video>
-            <div class="package-video-overlay"></div>
+            </div>
+
         </div>
     </section>
 </main>

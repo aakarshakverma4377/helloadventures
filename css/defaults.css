@@ -5,6 +5,19 @@
     box-sizing: border-box;
     transition: background-color 250ms ease, color 250ms ease;
     font-family:"Roboto",Arial, Helvetica, sans-serif;
+
+}
+h1 {
+    font-family: "Sansation", sans-serif;
+   font-size:  max(3em, min(10vw, 10vh));
+}
+h2 {
+    font-size:  max(2em, min(4vw, 4vh));
+}
+p{
+    color: inherit;
+    max-width: 100ch;
+    font-size: max(1.3em,min(2vh,2vw));;
 }
 html{
     overflow-x: hidden;
@@ -28,9 +41,4 @@ section{
     width:100vw;
     /*padding: 1em;*/
     position: relative;
-}
-p{
-    color: inherit;
-    max-width: 100ch;
-    font-size: 1.5em;
 }
