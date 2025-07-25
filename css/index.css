@@ -115,7 +115,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(to bottom, var(--overlay-color) 0%, transparent 20% 80%, var(--overlay-color) 100%);
+    /*background-image: linear-gradient(to bottom, var(--overlay-color) 0%, transparent 20% 80%, var(--overlay-color) 100%);*/
+    background-image: radial-gradient(transparent,#000);
 }
 
 
