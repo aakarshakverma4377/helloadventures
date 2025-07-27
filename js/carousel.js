@@ -359,7 +359,7 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis tempus leo eu aenean sed diam.",
+        about: "Nestled in the majestic Himalayas, Spiti Valley is a paradise for travelers seeking peace, adventure, and raw natural beauty. From ancient monasteries and rugged landscapes to crystal-clear rivers and charming villages, every corner of Spiti offers a unique experience. Spiti Valley promises an unforgettable journey. Discover a land where time stands still and nature speaks louder than words.",
         available_packages:
             [
                 {
