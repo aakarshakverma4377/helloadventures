@@ -54,10 +54,10 @@ function createTileHtml(tile_data) {
             <div class="about">
                 <h2>${name}</h2>
                 <span>
-                    ${LOCATION_SVG}
+                    ${DURATION_SVG}
                 <span>${duration}</span>
                 </span>
-                <span>${DURATION_SVG}
+                <span>${LOCATION_SVG}
                 <span>${location}</span>
                 </span>
             </div>
