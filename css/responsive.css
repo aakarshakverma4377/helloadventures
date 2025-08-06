@@ -3,7 +3,7 @@
         display: none;
     }
 }
-@media (orientation: portrait), (max-width:700px){
+@media (orientation: portrait), (max-aspect-ratio: 1.2){
     #menu-btn{
         display:block;
     }

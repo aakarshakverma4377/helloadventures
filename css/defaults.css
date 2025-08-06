@@ -10,9 +10,11 @@
 h1 {
     font-family: "Sansation", sans-serif;
    font-size:  max(3em, min(10vw, 10vh));
+    line-height: 0.99;
 }
 h2 {
     font-size:  max(2em, min(4vw, 4vh));
+    /*line-height: 0.99;*/
 }
 p{
     color: inherit;
