@@ -61,7 +61,7 @@ function createTileHtml(tile_data) {
                 <span>${location}</span>
                 </span>
             </div>
-            <span class="price">Starting from ${price_per_person} per person</span>
+            <span class="price">Starting from ${price_per_person} Per Person</span>
         </a>
         `;
 }
@@ -359,49 +359,49 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "Nestled in the majestic Himalayas, Spiti Valley is a paradise for travelers seeking peace, adventure, and raw natural beauty. From ancient monasteries and rugged landscapes to crystal-clear rivers and charming villages, every corner of Spiti offers a unique experience. Spiti Valley promises an unforgettable journey. Discover a land where time stands still and nature speaks louder than words.",
+        about: "Nestled in the Himalayas, Spiti Valley offers peace, adventure, and raw beauty. Explore ancient monasteries, scenic villages, and stunning landscapes—an unforgettable journey where nature and serenity meet timeless charm.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Spiti Circuit Offbeat Expedition",
+                    duration: "6N/7D",
+                    location: "Shimla To Shimla ",
+                    price_per_person: "30,000/-",
                     link: ""
                 },
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Majestic Spiti",
+                    duration: "6N/7D",
+                    location: "Shimla To Shimla",
+                    price_per_person: "15,000/-",
                     link: ""
                 },
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Magical Spiti",
+                    duration: "6N/7D",
+                    location: "Chandigarh To Chandigarh",
+                    price_per_person: "20,000/-",
                     link: ""
                 },
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Highland Serenity Spiti Package",
+                    duration: "7N/8D",
+                    location: "Delhi To Delhi ",
+                    price_per_person: "30,000/-",
                     link: ""
                 },
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Spiti Circuit X Chandigarh",
+                    duration: "8N/9D",
+                    location: "Chandigarh To Chandigarh",
+                    price_per_person: "25,000/-",
                     link: ""
                 },
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Spiti Unplugged",
+                    duration: "9N/10D",
+                    location: "Delhi To Delhi ",
+                    price_per_person: "35,000/-",
                     link: ""
                 }
             ],

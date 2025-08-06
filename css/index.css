@@ -92,7 +92,7 @@
     position: relative;
     display: block;
 }
-.nav-links a span:after{
+.nav-links a span::after{
     content: '';
     position: absolute;
     left: 50%;
@@ -341,6 +341,7 @@
     /*max-height:  var(--size);*/
     font-size: var(--tile-font-size);
     gap: 0.2em;
+
 }.tile span .icon{
      width: var(--tile-font-size);
      height: var(--tile-font-size);
