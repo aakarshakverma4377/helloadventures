@@ -334,7 +334,7 @@ new Carousel("domestic-packages", {
                     link: ""
                 },
                 {
-                    name: "Spiti Circuit X Chandigarh",
+                    name: "Spiti Circuit EX Chandigarh",
                     duration: "8N/9D",
                     location: "Chandigarh To Chandigarh",
                     price_per_person: "25,000/-",
@@ -461,12 +461,19 @@ new Carousel("domestic-packages", {
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Heaven Kashmir",
+                    duration: "6N/7D",
+                    location: "Srinagar To Srinagar ",
+                    price_per_person: "17,999",
                     link: ""
-                }
+                },
+                {
+                    name: "Snowy Escapes",
+                    duration: "7N/8D",
+                    location: "Srinagar To Srinagar ",
+                    price_per_person: "21,999",
+                    link: ""
+                },
             ],
         price: "1000"
     },
