@@ -357,16 +357,51 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Nestled in the lap of the Himalayas, Himachal Pradesh is a paradise for nature lovers and adventure seekers. From snow-capped peaks to lush valleys, ancient temples, colonial towns, and thrilling treks, Himachal offers the perfect blend of peace, culture, and excitement. A journey here promises unforgettable memories amidst breathtaking landscapes and warm hospitality.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Himalayan Delight Circuit",
+                    duration: "6N/7D",
+                    location: "Chandigarh To Chandigarh ",
+                    price_per_person: "18,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Manali & Solang Bliss",
+                    duration: "5N/6D",
+                    location: "Delhi To Delhi ",
+                    price_per_person: "20,000/-",
+                    link: ""
+                },
+                {
+                    name: "Shimla Kufri Charm",
+                    duration: "4N/5D",
+                    location: "Ambala Cantt To Ambala Cantt ",
+                    price_per_person: "18,000/-",
+                    link: ""
+                },
+                {
+                    name: "Dalhousie Dharamshala Escape",
+                    duration: "7N/8D",
+                    location: "Jammu To Jammu ",
+                    price_per_person: "25,000/-",
+                    link: ""
+                },
+                {
+                    name: "Magical Himachal Explorer",
+                    duration: "8N/9D",
+                    location: "Chandigarh To Chandigarh",
+                    price_per_person: "30,000/-",
+                    link: ""
+                },
+                {
+                    name: "Ultimate Himachal Adventure",
+                    duration: "9N/10D",
+                    location: "Delhi To Delhi",
+                    price_per_person: "35,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -377,16 +412,51 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Known as the Land of Gods (Devbhoomi), Uttarakhand is a perfect mix of spirituality, adventure, and natural beauty. From the holy towns of Haridwar and Rishikesh to the snow-clad Himalayas of Auli and Nainital’s serene lakes, Uttarakhand offers something for everyone. Whether you seek peace, trekking thrills, or divine blessings, every journey here becomes a cherished memory.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Sacred Char Dham Yatra",
+                    duration: "9N/10D",
+                    location: "Haridwar To Haridwar ",
+                    price_per_person: "40,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Nainital Lake Retreat",
+                    duration: "4N/5D",
+                    location: "Kathgodam To Kathgodam",
+                    price_per_person: "15,000/-",
+                    link: ""
+                },
+                {
+                    name: "Valley of Flowers Trek",
+                    duration: "6N/7D",
+                    location: "Rishikesh To Rishikesh",
+                    price_per_person: "22,000/-",
+                    link: ""
+                },
+                {
+                    name: "Auli Skiing Adventure",
+                    duration: "5N/6D",
+                    location: "Joshimath To Joshimath",
+                    price_per_person: "20,000/-",
+                    link: ""
+                },
+                {
+                    name: "Jim Corbett Safari Escape",
+                    duration: "3N/4D",
+                    location: "Ramnagar To Ramnagar",
+                    price_per_person: "12,000/-",
+                    link: ""
+                },
+                {
+                    name: "Mussoorie & Rishikesh Explorer",
+                    duration: "6N/7D",
+                    location: "Dehradun To Dehradun",
+                    price_per_person: "18,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -397,16 +467,37 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Known as “God’s Own Country”, Kerala is a land of lush greenery, serene backwaters, golden beaches, and rich culture. From tranquil houseboat rides in Alleppey to the tea gardens of Munnar, the wildlife of Thekkady, and Ayurvedic wellness retreats, Kerala offers a magical mix of relaxation, adventure, and heritage. A journey here is truly a soulful escape into nature’s paradise.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Backwaters Bliss",
+                    duration: "4N/5D",
+                    location: "Cochin To Cochin",
+                    price_per_person: "18,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Alleppey Houseboat Experience",
+                    duration: "3N/4D",
+                    location: "Alleppey To Alleppey ",
+                    price_per_person: "15,000/-",
+                    link: ""
+                },
+                {
+                    name: "Munnar Tea Garden Escape",
+                    duration: "5N/6D",
+                    location: "Cochin To Cochin ",
+                    price_per_person: "20,000/-",
+                    link: ""
+                },
+                {
+                    name: "Thekkady Wildlife Adventure",
+                    duration: "5N/6D",
+                    location: "Madurai To Madurai",
+                    price_per_person: "22,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -417,16 +508,23 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Andaman, known for its pristine beaches, turquoise waters, and rich marine life, is a tropical paradise. From exploring history in Port Blair to the white sand beaches of Havelock, Andaman offers the perfect mix of relaxation, adventure, and romance.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Port Blair City & Beach Tour",
+                    duration: "3N/4D",
+                    location: "Port Blair APT To Port Blair APT",
+                    price_per_person: "18,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Havelock Island Escape",
+                    duration: "4N/5D",
+                    location: "Port Blair APT To Port Blair APT",
+                    price_per_person: "20,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -437,16 +535,51 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Famous for its golden beaches, vibrant nightlife, Portuguese heritage, and laid-back vibes, Goa is India’s ultimate holiday destination. From thrilling water sports and buzzing beach shacks to serene churches, spice plantations, and hidden waterfalls, Goa offers the perfect blend of adventure, relaxation, and culture. A trip here is a celebration of life, music, and nature.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Classic North Goa Getaway",
+                    duration: "4N/5D",
+                    location: "Goa APT (Dabolim) To Goa APT",
+                    price_per_person: "15,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "South Goa Serenity Tour",
+                    duration: "3N/4D",
+                    location: "Madgaon RS TO Madgaon RS",
+                    price_per_person: "12,000/-",
+                    link: ""
+                },
+                {
+                    name: "Goa Beaches & Nightlife Escape",
+                    duration: "5N/6D",
+                    location: "Vasco Da Gama To Vasco Da Gama",
+                    price_per_person: "18,000/-",
+                    link: ""
+                },
+                {
+                    name: "Adventure & Water Sports Package",
+                    duration: "4N/5D",
+                    location: "Thivim RS To Thivim Railway Station",
+                    price_per_person: "20,000/-",
+                    link: ""
+                },
+                {
+                    name: "Goa Heritage & Spice Trails",
+                    duration: "6N/7D",
+                    location: "Panaji To Panaji",
+                    price_per_person: "22,000/-",
+                    link: ""
+                },
+                {
+                    name: "Luxury Goa Retreat (Beach + Cruise)",
+                    duration: "7N/8D",
+                    location: "Goa APT To Goa APT",
+                    price_per_person: "35,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -457,7 +590,7 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Popularly called “Paradise on Earth”, Kashmir is a dreamland of snow-covered mountains, lush valleys, shimmering lakes, and colorful gardens. From the charm of Srinagar’s houseboats and Gulmarg’s ski slopes to the meadows of Pahalgam and the breathtaking beauty of Sonmarg, every corner of Kashmir is pure magic. It’s a perfect destination for honeymoons, family trips, and adventure seekers alike.",
         available_packages:
             [
                 {
@@ -474,6 +607,13 @@ new Carousel("domestic-packages", {
                     price_per_person: "21,999",
                     link: ""
                 },
+                {
+                    name: "Srinagar Houseboat Experience",
+                    duration: "3N/4D",
+                    location: "Srinagar APT To Srinagar APT ",
+                    price_per_person: "15,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -484,16 +624,37 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Known as the Land of Kings, Rajasthan is a royal destination filled with majestic forts, grand palaces, golden deserts, vibrant markets, and rich cultural heritage. From the Pink City of Jaipur and the lakes of Udaipur to the golden sands of Jaisalmer and blue streets of Jodhpur, Rajasthan offers an unforgettable blend of history, culture, and adventure.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Jaipur Royal Experience",
+                    duration: "4N/6D",
+                    location: "Jaipur APT/RS To Jaipur",
+                    price_per_person: "18,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Udaipur & Mount Abu Escape",
+                    duration: "5N/6D",
+                    location: "Udaipur APT/RS To Udaipur",
+                    price_per_person: "20,000/-",
+                    link: ""
+                },
+                {
+                    name: "Jaisalmer Desert Safari",
+                    duration: "4N/5D",
+                    location: "Jaisalmer RS To Jaisalmer",
+                    price_per_person: "22,000/-",
+                    link: ""
+                },
+                {
+                    name: "Jodhpur & Osian Desert Tour",
+                    duration: "5N/6D",
+                    location: "Jodhpur APT/RS To Jodhpur",
+                    price_per_person: "19,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -504,16 +665,30 @@ new Carousel("domestic-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Sikkim, the jewel of the Northeast, is a paradise of snow-capped mountains, colorful monasteries, alpine meadows, and sparkling lakes. Home to the mighty Kanchenjunga, it offers breathtaking landscapes, spiritual experiences, thrilling treks, and warm hospitality. From Gangtok’s vibrant streets to the peaceful beauty of Lachung and Yumthang Valley, Sikkim is a dream destination for every traveler.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Gangtok & Tsomgo Lake Delight",
+                    duration: "4N/5D",
+                    location: "Bagdogra APT To Bagdogra APT",
+                    price_per_person: "19,999/-",
                     link: ""
-                }
+                },
+                {
+                    name: "North Sikkim Adventure",
+                    duration: "5N/6D",
+                    location: "Siliguri RS To Siliguri RS",
+                    price_per_person: "22,000/-",
+                    link: ""
+                },
+                {
+                    name: "Pelling & Ravangla Escape",
+                    duration: "5N/6D",
+                    location: "Bagdogra APT To Bagdogra APT",
+                    price_per_person: "21,999",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -528,10 +703,10 @@ new Carousel("domestic-packages", {
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Delhi Agra Jaipur",
+                    duration: "5N/6D",
+                    location: "Pickup-Delhi/Drop-Jaipur",
+                    price_per_person: "16,000/-",
                     link: ""
                 }
             ],
