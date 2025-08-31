@@ -910,16 +910,30 @@ new Carousel("pilgrimage-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Rameshwaram, Madurai & Kanyakumari are among the most iconic spiritual and cultural destinations of South India. From the Ramanathaswamy Temple at Rameshwaram to the Meenakshi Amman Temple at Madurai and the Vivekananda Rock Memorial at Kanyakumari, this circuit offers devotion, history, and natural beauty in one journey.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Madurai-Rameshwaram Spiritual Tour",
+                    duration: "3N/4D",
+                    location: "Madurai APT/Madurai RS",
+                    price_per_person: "18,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Rameshwaram-Kanyakumari Temple Tour",
+                    duration: "4N/5D",
+                    location: "Rameshwaram RS/Madurai APT",
+                    price_per_person: "29,999/-",
+                    link: ""
+                },
+                {
+                    name: "South India Heritage & Temple Trail",
+                    duration: "6N/7D",
+                    location: "Trichy APT/Madurai APT",
+                    price_per_person: "37,999/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -930,16 +944,23 @@ new Carousel("pilgrimage-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Varanasi, Ayodhya & Prayagraj are three of the most sacred cities in India. From the ghats of Kashi (Varanasi) and the Ram Mandir of Ayodhya to the Triveni Sangam of Prayagraj, this holy circuit offers a complete blend of spirituality, history, and devotion.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Varanasi Spiritual Tour",
+                    duration: "2N/3D",
+                    location: "Varanasi Airport/Varanasi RS",
+                    price_per_person: "12,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Ayodhya-Prayagraj Temple Darshan",
+                    duration: "3N/4D",
+                    location: "Ayodhya RS/Lucknow APT",
+                    price_per_person: "16,999/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -950,36 +971,92 @@ new Carousel("pilgrimage-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Himachal Pradesh is home to some of the most revered Shaktipeeths of India, attracting lakhs of devotees every year. The key temples include Naina Devi, Chintpurni, Jwala Ji, Chamunda Devi, and Brajeshwari Devi (Kangra Mata). This pilgrimage circuit offers a divine spiritual journey amidst the scenic beauty of the Himalayas.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Mata Naina Devi & Chintpurni Darshan",
+                    duration: "2N/3D",
+                    location: "Una RS/Kiratpur Sahib RS",
+                    price_per_person: "9,999/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Jwala Ji & Chamunda Devi Yatra",
+                    duration: "3N/4D",
+                    location: "Kangra Airport/Pathankot RS",
+                    price_per_person: "15,999/-",
+                    link: ""
+                },
+                {
+                    name: "Kangra Devi & Chamunda Devi Pilgrimage",
+                    duration: "2N/3D",
+                    location: "Pathankot RS/Dharamshala APT",
+                    price_per_person: "10,500/-",
+                    link: ""
+                },
+                {
+                    name: "Complete Himachal Shaktipeeth Circuit",
+                    duration: "5N/6D",
+                    location: "Una RS/Pathankot RS",
+                    price_per_person: "18,000/-",
+                    link: ""
+                },
+                {
+                    name: "Shakti Darshan with Dharamshala & Kangra Valley",
+                    duration: "4N/5D",
+                    location: "Pathankot TS/Dharamshala APT",
+                    price_per_person: "22,000/-",
+                    link: ""
+                },
+                {
+                    name: "Luxury Himachal Shaktipeeth Yatra",
+                    duration: "6N/7D",
+                    location: "Chandigarh APT/Pathankot RS",
+                    price_per_person: "25,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
-    "char dham\ndo dham": {
+    "char dham do dham": {
         thumbnail: "./assets/pilgrimage/chardham.jpg",
         background_url: [
             "./assets/phone/international/dubai.jpg",
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "The Char Dham Yatra (Badrinath, Kedarnath, Gangotri & Yamunotri) and Do Dham Yatra (popularly Kedarnath–Badrinath or Gangotri–Yamunotri) are the most sacred pilgrimages of Uttarakhand, offering spiritual peace amidst the Himalayas.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Char Dham Yatra Ex Haridwar",
+                    duration: "9N/10D",
+                    location: "Haridwar RS To Haridwar RS",
+                    price_per_person: "42,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Char Dham Yatra Ex Rishikesh",
+                    duration: "10N/11D",
+                    location: "Rishikesh/Dehradun APT",
+                    price_per_person: "44,000/-",
+                    link: ""
+                },
+                {
+                    name: "Kedarnath-Badrinath Do Dham Yatra",
+                    duration: "5N/6D",
+                    location: "Haridwar/Dehradun APT",
+                    price_per_person: "28,000/-",
+                    link: ""
+                },
+                {
+                    name: "Gangotri-Yamunotri Do Dham Yatra",
+                    duration: "5N/6D",
+                    location: "Rishikesh/Dehradun APT",
+                    price_per_person: "26,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -990,16 +1067,16 @@ new Carousel("pilgrimage-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "Mata Vaishno Devi, located in the Trikuta Hills near Katra (Jammu), is one of the most sacred shrines of India. Pilgrims trek 13 km from Katra to the holy cave where Maa Vaishno Devi is worshipped. With options of helicopter rides, ropeways, and spiritual add-ons like Shivkhori and Patnitop, this yatra is a once-in-a-lifetime divine experience.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Vaishno Devi Darshan",
+                    duration: "1N/2D",
+                    location: "Jammu APT/Jammu APT",
+                    price_per_person: "10,000/-",
                     link: ""
-                }
+                },
             ],
         price: "1000"
     },
@@ -1010,16 +1087,30 @@ new Carousel("pilgrimage-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "The Golden Temple (Sri Harmandir Sahib) in Amritsar, Punjab, is the holiest shrine of Sikhism, attracting millions of devotees and tourists from across the world. Along with spiritual peace, Amritsar also offers Jallianwala Bagh, Wagah Border ceremony, and Punjabi cultural experiences.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Golden Temple Express Darshan",
+                    duration: "1N/2D",
+                    location: "Amritsar APT/Amritsar APT",
+                    price_per_person: "12,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Golden Temple with Jallianwala Bagh & Wagah Border",
+                    duration: "2N/3D",
+                    location: "Amritsar APT/Amritsar APT",
+                    price_per_person: "13,999/-",
+                    link: ""
+                },
+                {
+                    name: "Spiritual Amritsar & Anandpur Sahib Tour",
+                    duration: "3N/4D",
+                    location: "Amritsar APT/Amritsar APT",
+                    price_per_person: "12,999/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -1030,16 +1121,24 @@ new Carousel("pilgrimage-packages", {
             "./assets/phone/international/dubai.jpg"
         ],
 
-        about: "",
+        about: "The Pashupatinath Temple in Kathmandu, Nepal, is one of the most sacred temples of Lord Shiva and a UNESCO World Heritage Site. Situated on the banks of the Bagmati River, it attracts devotees from across the world. Along with darshan, travelers can also explore nearby attractions like Guhyeshwari Temple, Budhanilkantha, and the cultural beauty of Kathmandu Valley.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Pashupatinath Darshan",
+                    duration: "2N/3D",
+                    location: "Tribhuvan APT To Tribhuvan APT",
+                    price_per_person: "12,999/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Pashupatinath With Kathmandu City Tour",
+                    duration: "3N/4D",
+                    location: "Kathmandu APT To Kathmandu APT",
+                    price_per_person: "16,999/-",
+                    link: ""
+                },
+
             ],
         price: "1000"
     }
