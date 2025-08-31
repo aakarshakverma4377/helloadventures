@@ -721,16 +721,37 @@ new Carousel("international-packages", {
             "./assets/phone/international/dubai.jpg",
             "./assets/phone/international/dubai.jpg"
         ],
-        about: "",
+        about: "Dubai, the City of Dreams, is a glamorous mix of ultramodern architecture, luxury shopping, Arabian culture, and desert adventures. From the towering Burj Khalifa and dazzling shopping malls to the golden desert safaris, luxury cruises, and theme parks, Dubai offers an unforgettable international holiday for families, couples, and adventure seekers alike.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Dubai City Highlights Tour",
+                    duration: "4N/5D",
+                    location: "Dubai International APT To Dubai International APT",
+                    price_per_person: "45,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Desert Safari & Dhow Cruise Special",
+                    duration: "5N/6D",
+                    location: "Dubai International APT To Dubai International APT",
+                    price_per_person: "55,000/-",
+                    link: ""
+                },
+                {
+                    name: "Luxury Dubai Honeymoon Package",
+                    duration: "5N/6D",
+                    location: "Dubai International APT To Dubai International APT",
+                    price_per_person: "60,000/-",
+                    link: ""
+                },
+                {
+                    name: "Dubai with Abu Dhabi Grand Mosque Tour",
+                    duration: "6N/7D",
+                    location: "Dubai International APT To Dubai International APT",
+                    price_per_person: "70,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -740,16 +761,30 @@ new Carousel("international-packages", {
             "./assets/phone/international/dubai.jpg",
             "./assets/phone/international/dubai.jpg"
         ],
-        about: "",
+        about: "Sri Lanka, the Pearl of the Indian Ocean, is a tropical paradise filled with golden beaches, lush tea plantations, ancient temples, wildlife safaris, and cultural heritage. From Colombo’s vibrant city life to the serene hills of Kandy and Nuwara Eliya, and the beaches of Bentota, Sri Lanka offers a mix of relaxation, adventure, and history.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Colombo City & Heritage Tour",
+                    duration: "3N/4D",
+                    location: "Colombo APT To Colombo APT",
+                    price_per_person: "35,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Kandy & Cultural Triangle Escape",
+                    duration: "4N/5D",
+                    location: "Colombo APT To Colombo APT",
+                    price_per_person: "40,000/-",
+                    link: ""
+                },
+                {
+                    name: "Nuwara Eliya Tea Garden Retreat",
+                    duration: "5N/6D",
+                    location: "Colombo APT To Colombo APT",
+                    price_per_person: "45,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -759,16 +794,37 @@ new Carousel("international-packages", {
             "./assets/phone/international/dubai.jpg",
             "./assets/phone/international/dubai.jpg"
         ],
-        about: "",
+        about: "Singapore, the Lion City, is a dazzling destination known for its futuristic skyline, luxury shopping, family attractions, and vibrant nightlife. From the wonders of Sentosa Island and Gardens by the Bay to thrilling rides at Universal Studios and cultural vibes in Chinatown & Little India, Singapore is the perfect blend of modernity and tradition.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Singapore City Highlights",
+                    duration: "3N/4D",
+                    location: "Singapore Changi APT To SIN",
+                    price_per_person: "50,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Sentosa Island & Adventure Tour",
+                    duration: "4N/5D",
+                    location: "Singapore Changi APT To SIN",
+                    price_per_person: "50,000/-",
+                    link: ""
+                },
+                {
+                    name: "Universal Studios Family Fun Package",
+                    duration: "4N/5D",
+                    location: "Singapore APT To Singapore APT",
+                    price_per_person: "58,000/-",
+                    link: ""
+                },
+                {
+                    name: "Singapore with Night Safari & River Cruise",
+                    duration: "5N/6D",
+                    location: "Singapore APT To Singapore APT",
+                    price_per_person: "62,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -778,16 +834,30 @@ new Carousel("international-packages", {
             "./assets/phone/international/dubai.jpg",
             "./assets/phone/international/dubai.jpg"
         ],
-        about: "",
+        about: "Thailand, the Land of Smiles, is famous for its tropical beaches, bustling cities, exotic islands, and vibrant nightlife. From the temples and street markets of Bangkok to the white sandy beaches of Phuket and Krabi, and the lively vibes of Pattaya, Thailand offers the perfect mix of adventure, relaxation, and culture.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
+                    name: "Bangkok City & Temple Tour",
+                    duration: "3N/4D",
+                    location: "Bandkok Suvarnabhumi APT To Bandkok Suvarnabhumi APT",
                     price_per_person: "price",
                     link: ""
-                }
+                },
+                {
+                    name: "Pattaya Beach & Coral Island Escape",
+                    duration: "4N/5D",
+                    location: "Bangkok APT To Bangkok APT",
+                    price_per_person: "45,000/-",
+                    link: ""
+                },
+                {
+                    name: "Phuket Island Retreat",
+                    duration: "4N/5D",
+                    location: "Phuket International APT To HKT",
+                    price_per_person: "48,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     },
@@ -797,16 +867,37 @@ new Carousel("international-packages", {
             "./assets/phone/international/dubai.jpg",
             "./assets/phone/international/dubai.jpg"
         ],
-        about: "",
+        about: "Nepal, the Land of the Himalayas, is a breathtaking destination known for its snow-capped peaks, ancient temples, vibrant culture, and spiritual atmosphere. From Kathmandu’s rich heritage to Pokhara’s serene lakes, Chitwan’s wildlife, and the mighty Mount Everest, Nepal offers both adventure and peace for travelers.",
         available_packages:
             [
                 {
-                    name: "title",
-                    duration: "duration",
-                    location: "from to ",
-                    price_per_person: "price",
+                    name: "Kathmandu Heritage & Temple Tour",
+                    duration: "3N/4D",
+                    location: "Tribhuvan International APT To KTM",
+                    price_per_person: "25,000/-",
                     link: ""
-                }
+                },
+                {
+                    name: "Kathmandu-Pokhara Scenic Escape",
+                    duration: "4N/5D",
+                    location: "Kathmandu APT To Kathmandu APT",
+                    price_per_person: "30,000/-",
+                    link: ""
+                },
+                {
+                    name: "Chitwan Wildlife Safari",
+                    duration: "5N/6D",
+                    location: "Kathmandu APT To Kathmandu APT",
+                    price_per_person: "35,000/-",
+                    link: ""
+                },
+                {
+                    name: "Complete Nepal Explorer",
+                    duration: "7N/8D",
+                    location: "Tribhuvan International APT To KTM",
+                    price_per_person: "45,000/-",
+                    link: ""
+                },
             ],
         price: "1000"
     }
