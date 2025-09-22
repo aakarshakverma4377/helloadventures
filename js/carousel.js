@@ -310,7 +310,7 @@ new Carousel("domestic-packages", {
                     duration: "6N/7D",
                     location: "Shimla To Shimla ",
                     price_per_person: "30,000/-",
-                    link: ""
+                    link: "./pages/spiti-valley/package-1.html"
                 },
                 {
                     name: "Majestic Spiti",
