@@ -1,0 +1,60 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    /*background: black; !* fills empty space around the video *!*/
+}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* full video visible */
+}
+
+#intro {
+    display: block;
+    position: absolute;
+    height: fit-content;
+    bottom: 1em;
+    width: 100%;
+    padding: 1em 2em;
+    z-index: 1;
+    color: #fff;
+    transform: translateY(-0%);
+}
+
+#intro h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    line-height: 0.9;
+}
+
+#intro p {
+    /*text-shadow: 1px 0 2px #000,0 0 2px #000,0 0 2px #000,0 0 2px #000;*/
+    /*padding-top: 1em;*/
+    font-size: 20px;
+    /*font-size: min(max(0.9em, 2vw), 2.5vh);*/
+    text-align: left;
+    width: 65ch;
+    max-width: 100%;
+    /*line-height: 0.9;*/
+}
+
+#intro h3 {
+    font-size: 28px;
+    /*margin-bottom: 10px;*/
+    line-height: 0.9;
+}
+
+.price {
+    font-size: 26px;
+    font-weight: 600;
+    /*margin-bottom: 20px;*/
+    padding-bottom: 400px;
+    line-height: 0.1;
+}
