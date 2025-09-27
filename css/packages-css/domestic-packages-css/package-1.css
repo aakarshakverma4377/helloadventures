@@ -3,7 +3,57 @@ body, html {
     padding: 0;
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
     /*background: black; !* fills empty space around the video *!*/
+}
+
+/*-------------------------------------------------------------------------------------------------------
+/*------------------------------------Auto Image Slideshow-----------------------------------------------
+/*-------------------------------------------------------------------------------------------------------*/
+
+.container {
+    width: 100vw;      /* Full viewport width */
+    height: 100vh;     /* Full viewport height */
+    position: fixed;   /* Sticks to entire screen */
+    overflow: hidden;  /* Prevents overflow */
+}
+
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    animation: slide 16s infinite;
+}
+
+@keyframes slide {
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
+}
+
+img {
+    width: 100%;
 }
 
 .bg-video {
