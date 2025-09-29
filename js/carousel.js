@@ -71,7 +71,6 @@ class Carousel {
         this.centerIndex = 0;
         this.isAnimating = false;
         this.queue = [];
-        this.prevRootElementHeight = this.rootElement.offsetHeight;
 
         this._setupStructure();
         this._attachEventListeners();
@@ -258,25 +257,16 @@ class Carousel {
             this.centerIndex = (this.centerIndex + (dir === 1 ? 1 : -1) + this.items.length) % this.items.length;
 
             const rect = this.rootElement.getBoundingClientRect();
-            const bottomMisaligned = Math.abs(rect.bottom - window.innerHeight) > 2;
+            const prevRootElementHeight = rect.height;
+            console.log(rect,this.rootElement);
             this._update();
-            const newRootHeight = this.rootElement.offsetHeight;
+            const newRootHeight = this.rootElement.getBoundingClientRect().height;
             // Check if the bottom edge is off by more than 2px
-            const rootHeightChanged = Math.abs(newRootHeight - this.prevRootElementHeight) > 2;
-            console.log(rootHeightChanged, bottomMisaligned);
-            if (rootHeightChanged) {
-                // Instant scroll when height has changed
-                this.prevRootElementHeight = newRootHeight;
-                if (bottomMisaligned)//scroll smoothly if misaligned
-                    this.rootElement.scrollIntoView({block: "end", inline: "nearest", behavior: "smooth"});
-                else // scroll instantly otherwise
-                    this.rootElement.scrollIntoView({block: "end", inline: "nearest", behavior: "instant"});
+            const rootHeightChanged = newRootHeight - prevRootElementHeight;
+            console.log(rootHeightChanged);
 
-            } else if (bottomMisaligned) {
-                // Smooth scroll when the bottom isn't aligned correctly
-                this.rootElement.scrollIntoView({block: "end", inline: "nearest", behavior: "smooth"});
-            }
-
+            window.scrollBy({top:rootHeightChanged,left:0,behavior:"instant"});
+            // window.scrollTo({top:this.rootElement.getBoundingClientRect().top + rootHeightChanged,left:rect.left, behavior:"smooth"});
             await new Promise(r => setTimeout(r, this.animationDuration));
         }
         this.isAnimating = false;
