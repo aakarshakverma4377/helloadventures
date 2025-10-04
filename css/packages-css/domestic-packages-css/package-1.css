@@ -61,3 +61,20 @@ body, html {
     padding: 0.5em 0.5em;
     color: #fff;
 }
+
+#intro h3 {
+    font-size: 1.5em;
+    line-height: 0;
+}
+
+.price {
+    font-size: 1.6em;
+    line-height: 0.55;
+}
+
+#intro p{
+    padding-top: 310px;
+    /*word-wrap: break-word;*/
+    text-align: left;
+    width: 70ch;
+}
