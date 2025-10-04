@@ -78,3 +78,26 @@ body, html {
     text-align: left;
     width: 70ch;
 }
+
+.container-2{
+    padding-top: 50px;
+    padding-left: 95px;
+    /*align-items: center;*/
+}
+
+.scroll{
+    width: 60em;
+    height: 400px;
+    padding: 10px;
+    background: #000000;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.scroll p{
+    font-size: 1.2rem;
+    color: #fff;
+    padding: 20px 20px;
+    text-align: justify;
+
+}
