@@ -79,25 +79,63 @@ body, html {
     width: 70ch;
 }
 
-.container-2{
-    padding-top: 50px;
-    padding-left: 95px;
-    /*align-items: center;*/
+.itinerary-section {
+    background-color: #6c6c6c;
+    color: white;
+    padding: 50px 0;
 }
 
-.scroll{
-    width: 60em;
-    height: 400px;
+.itinerary-container {
+    display: flex;
+    justify-content: space-between; /* pushes content left and buttons right */
+    align-items: flex-start;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.day-content {
+    width: 75%;
+    padding-right: 30px; /* space between text and buttons */
+}
+
+.day-buttons {
+    display: flex;
+    flex-direction: column;
+    background-color: #2b2b2b;
+    border-radius: 20px;
     padding: 10px;
-    background: #000000;
-    overflow: hidden;
-    overflow-y: scroll;
+    position: sticky;     /* stays in view only inside itinerary section */
+    top: 100px;           /* distance from top when sticking starts */
+    height: fit-content;
+    right: 0;             /* ensures it stays at the right side */
 }
 
-.scroll p{
-    font-size: 1.2rem;
-    color: #fff;
-    padding: 20px 20px;
-    text-align: justify;
+.day-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s;
+}
 
+.day-btn:hover,
+.day-btn.active {
+    background-color: #444;
+}
+
+.day h2 {
+    margin-top: 0;
+}
+
+.itinerary-section h1 {
+    margin-left: 50px;
+    margin-top: 0px;
+    font-size: 45px;
+    font-family: "Arial Rounded MT Bold", sans-serif;
 }

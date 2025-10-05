@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Spiti Circuit Offbeat Expedition</title>
     <link rel="stylesheet" href="../.././css/packages-css/domestic-packages-css/package-1.css">
+    <script src="../.././js/buttons.js"></script>
     </head>
 <body>
 <div class="slideshow-container">
@@ -22,43 +23,44 @@
         </p>
     </div>
 </div>
-<div class="container-2">
-    <div class="scroll">
-        <p>
-            Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at
-            least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of
-            ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a
-            single sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine
-            whether a section in a paper is a paragraph. For instance, in some styles of writing, particularly
-            journalistic styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or
-            group of sentences that support one main idea. In this handout, we will refer to this as the “controlling
-            idea,” because it controls what happens in the rest of the paragraph.Paragraphs are the building blocks of
-            papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five
-            sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among
-            sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a single
-            sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine whether a
-            section in a paper is a paragraph. For instance, in some styles of writing, particularly journalistic
-            styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or group of
-            sentences that support one main idea. In this handout, we will refer to this as the “controlling idea,”
-            because it controls what happens in the rest of the paragraph.Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at
-            least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of
-            ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a
-            single sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine
-            whether a section in a paper is a paragraph. For instance, in some styles of writing, particularly
-            journalistic styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or
-            group of sentences that support one main idea. In this handout, we will refer to this as the “controlling
-            idea,” because it controls what happens in the rest of the paragraph.Paragraphs are the building blocks of
-            papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five
-            sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among
-            sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a single
-            sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine whether a
-            section in a paper is a paragraph. For instance, in some styles of writing, particularly journalistic
-            styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or group of
-            sentences that support one main idea. In this handout, we will refer to this as the “controlling idea,”
-            because it controls what happens in the rest of the paragraph.
-        </p>
-    </div>
-</div>
 
+<section class="itinerary-section">
+    <h1>Itinerary</h1>
+    <div class="itinerary-heading"></div>
+    <div class="itinerary-container">
+        <div class="day-content">
+            <div class="day" id="day1">
+                <h2>Day 01 – Chandigarh to Narkanda</h2>
+                <p>Distance: 180 km<br>Elevation: 2,700 m<br>Drive Duration: 6–7 hours</p>
+                <p>Highlights: Scenic drive via Shimla, apple orchards, Hatu Peak (optional visit)...</p>
+            </div>
+
+            <div class="day" id="day2" style="display:none;">
+                <h2>Day 02 – Narkanda to Sangla</h2>
+                <p>Distance: 160 km<br>Drive Duration: 6 hours</p>
+                <p>Highlights: Drive through Kinnaur valley, Baspa river, Kamru Fort...</p>
+            </div>
+
+            <div class="day" id="day3" style="display:none;">
+                <h2>Day 03 – Sangla to Kalpa</h2>
+                <p>Distance: 50 km<br>Drive Duration: 2 hours</p>
+                <p>Highlights: Visit Chitkul, last village near the Indo-Tibet border...</p>
+            </div>
+
+            <div class="day" id="day4" style="display:none;">
+                <h2>Day 04 – Kalpa to Tabo</h2>
+                <p>Distance: 160 km<br>Drive Duration: 7 hours</p>
+                <p>Highlights: Beautiful mountain roads, Spiti river views...</p>
+            </div>
+        </div>
+
+        <div class="day-buttons">
+            <button class="day-btn active" onclick="showDay(1)">Day 1</button>
+            <button class="day-btn" onclick="showDay(2)">Day 2</button>
+            <button class="day-btn" onclick="showDay(3)">Day 3</button>
+            <button class="day-btn" onclick="showDay(4)">Day 4</button>
+        </div>
+    </div>
+</section>
 </body>
 </html>
