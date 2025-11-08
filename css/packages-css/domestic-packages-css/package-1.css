@@ -140,3 +140,133 @@ body, html {
     font-size: 45px;
     font-family: "Arial Rounded MT Bold", sans-serif;
 }
+/*-------------------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------Inclusions Green Box-----------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------*/
+.page {
+    background-color: #f6fbf4;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    font-family: 'Poppins', sans-serif;
+    width: 95%;
+    height: 95%;
+}
+
+.inclusions-box {
+    background-color: #f9fff8;
+    border-left: 5px solid #27ae60;
+    border-radius: 8px;
+    padding: 30px 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 100%;
+}
+
+.inclusions-box h2 {
+    font-size: 1.6em;
+    color: #222;
+    position: relative;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.inclusions-box h2::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 100%;
+    background-color: #27ae60;
+    border-radius: 2px;
+}
+
+.inclusions-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.inclusions-box li {
+    margin: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    color: #333;
+    line-height: 1.6;
+}
+
+.inclusions-box li::before {
+    content: "✔";
+    color: #27ae60;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+/*-------------------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------Inclusions Green Box-----------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------*/
+.page {
+    background-color: #f6fbf4;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    font-family: 'Poppins', sans-serif;
+    width: 95%;
+    height: 95%;
+}
+
+.exclusions-box {
+    background-color: #fdf2f2;
+    border-left: 5px solid #fd2222;
+    border-radius: 8px;
+    padding: 30px 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 100%;
+}
+
+.exclusions-box h2 {
+    font-size: 1.6em;
+    color: #222;
+    position: relative;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.exclusions-box h2::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 100%;
+    background-color: #fdf2f2;
+    border-radius: 2px;
+}
+
+.exclusions-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.exclusions-box li {
+    margin: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    color: #333;
+    line-height: 1.6;
+}
+
+.exclusions-box li::before {
+    content: "×";
+    color: #fd3a3a;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+
+
+
